@@ -1,5 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { navigate } from "gatsby"
 
-export default function Home() {
-  return <div>Hello world!</div>
+export default function Index() {
+  useEffect(() => {
+    navigate("/hotel")
+  }, [])
+  return <></>
 }

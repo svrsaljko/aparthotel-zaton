@@ -1,0 +1,77 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  } */
+
+/* html {
+  font-size: 62.5%;
+}
+
+select:hover {
+  cursor: pointer;
+} */
+
+/*option hover still dont work in many browsers*/
+/* select option:hover {
+    /* box-shadow: 0 0 10px 100px #000 inset; 
+    cursor: pointer;
+  } 
+  */
+
+/* select:focus > option:hover { 
+    /* background: #000 !important; 
+    cursor: pointer;
+  } */
+
+/* .react-icons {
+  font-size: 2.2rem;
+}
+.react-icons:hover {
+  cursor: pointer;
+} */
+.header-nav-link {
+  font-size: 1.6rem;
+
+  color: #45b0ff;
+  text-decoration: none;
+}
+.header-nav-link-active {
+  color: #027bd4;
+  font-weight: bold;
+}
+
+/* .google-map {
+  width: 1000px;
+  height: 700px;
+} */
+
+@media (max-width: 480px) {
+  .header-nav-link {
+    text-align: center;
+    border-bottom: 1px solid #45b0ff;
+    font-size: 2.2rem;
+    padding: 0.5rem;
+  }
+  .header-nav-link-active {
+    border-bottom: 1px solid #027bd4;
+    color: "#027bd4";
+    font-weight: bold;
+  }
+  /* .google-map {
+    width: 300px;
+    height: 200px;
+  } */
+
+  /* body {
+    margin: 0;
+  } */
+}

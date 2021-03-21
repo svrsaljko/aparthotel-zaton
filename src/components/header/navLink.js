@@ -1,6 +1,7 @@
 import React from "react"
 // import { NavLink } from 'react-router-dom'
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
+import { FormattedMessage, Link } from "gatsby-plugin-react-intl"
 // import { FormattedMessage } from 'react-intl'
 // import { Provider, useSelector, useDispatch } from 'react-redux'
 // import { setShowMenu } from '../actions/headerActions'
@@ -21,11 +22,10 @@ const NavLink = ({ name, to }) => {
       to={to}
       //onClick={() => (showMenu ? dispatch(setShowMenu(false)) : null)}
     >
-      {/* <FormattedMessage
+      <FormattedMessage
         id={`header.navlink.${to.slice(1, to.length)}`}
         defaultMessage={name}
-      /> */}
-      {name}
+      />
     </Link>
   )
 }

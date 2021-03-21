@@ -20,7 +20,7 @@ module.exports = {
         // supported language
         languages: [`en`, `hr`, `de`],
         // language file path
-        defaultLanguage: `hr`,
+        defaultLanguage: `en`,
         // option to redirect to `/ko` when connecting `/`
         redirect: true,
         // option for use / as defaultLangauge root path. if your defaultLanguage is `ko`, when `redirectDefaultLanguageToRoot` is true, then it will not generate `/ko/xxx` pages, instead of `/xxx`

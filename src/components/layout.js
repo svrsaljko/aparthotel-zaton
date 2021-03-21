@@ -1,8 +1,11 @@
 import React from "react"
 import Helemet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { IntlProvider } from "gatsby-plugin-react-intl"
+
 import PropTypes from "prop-types"
 import Header from "./header"
+import LanguageSelector from "../components/languageSelector"
 import "../css/index.css"
 
 const Layout = ({ children }) => {
@@ -37,7 +40,7 @@ const Layout = ({ children }) => {
         ]}
       />
       <Header />
-
+      <LanguageSelector />
       {children}
     </div>
   )

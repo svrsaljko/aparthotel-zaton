@@ -20,9 +20,9 @@ export const NavLinkWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   @media (max-width: 480px) {
-   // display: ${({ show }) => (show ? "flex" : "none")};
-   display: flex;
-   flex-direction: column;
+    display: ${({ show }) => (show ? "flex" : "none")};
+    display: flex;
+    flex-direction: column;
   }
 `
 
@@ -37,8 +37,15 @@ export const HamburgerMenuWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    //border: 1px solid red;
-    //color: ${({ show }) => (show ? LOGO_LIGHT_BLUE : LOGO_DARK_BLUE)}; 
+    color: ${({ show }) => (show ? LOGO_LIGHT_BLUE : LOGO_DARK_BLUE)};
     color: ${LOGO_DARK_BLUE};
-    }
-   `
+  }
+`
+
+export const NavBar = styled.div`
+  display: block;
+  @media (max-width: 480px) {
+    display: ${({ show }) => (show ? "flex" : "none")};
+    flex-direction: column;
+  }
+`

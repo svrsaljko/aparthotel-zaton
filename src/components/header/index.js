@@ -1,14 +1,19 @@
 import React from "react"
-import { HeaderWrapper } from "./headerStyled"
+import { useSelector } from "react-redux"
+import { HeaderWrapper, NavBar } from "./headerStyled"
 import NavLinkContainer from "./navLinkContainer"
 import TitleContainer from "./titleContainer"
 import "../../css/header.css"
 
 const Header = () => {
+  const showMenu = useSelector(state => state.menuReducer.showMenu)
+
   return (
     <HeaderWrapper>
       <TitleContainer />
-      <NavLinkContainer />
+      <NavBar show={showMenu}>
+        <NavLinkContainer />
+      </NavBar>
     </HeaderWrapper>
   )
 }

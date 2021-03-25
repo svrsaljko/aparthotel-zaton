@@ -22,6 +22,7 @@ const NavLink = ({ name, to }) => {
       to={to}
       //onClick={() => (showMenu ? dispatch(setShowMenu(false)) : null)}
     >
+      {console.log("prijevod: ", `header.navlink.${to.slice(1, to.length)}`)}
       <FormattedMessage
         id={`header.navlink.${to.slice(1, to.length)}`}
         defaultMessage={name}

@@ -9,11 +9,18 @@ import PropTypes from "prop-types"
 import Header from "./header"
 import LanguageSelector from "../components/languageSelector"
 import "../css/index.css"
+import styled from "styled-components"
 
 const mapStateToProps = state => {
-  console.log("state: ", state)
   return { state }
 }
+
+const PageWrapper = styled.div`
+  //border: 3px solid black;
+  margin-right: 20rem;
+  margin-left: 20rem;
+  margin-top: 1rem;
+`
 
 // const mapDispatchToProps = dispatch => {
 //   return { increment: () => dispatch({ type: `INCREMENT` }) }
@@ -32,10 +39,8 @@ const Layout = ({ children }) => {
     }
   `)
 
-  console.log("data after: ", data)
-
   return (
-    <div>
+    <>
       <Helemet
         title={data.site.siteMetadata.title}
         // da li keywordsi pomazu SEO? maknit iz query-a ako se ne dili title okolo brze je
@@ -50,10 +55,12 @@ const Layout = ({ children }) => {
           },
         ]}
       />
-      <Header />
-      <LanguageSelector />
-      {children}
-    </div>
+
+      <PageWrapper>
+        <Header />
+        {children}
+      </PageWrapper>
+    </>
   )
 }
 

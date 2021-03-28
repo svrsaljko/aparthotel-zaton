@@ -1,96 +1,129 @@
-import React, { useState, useEffect } from "react"
-import SLIDER_1 from "../images/slider-1.jpg"
-import SLIDER_2 from "../images/slider-2.jpg"
-import SLIDER_3 from "../images/slider-3.jpg"
-import SLIDER_4 from "../images/slider-4.jpg"
-import SLIDER_5 from "../images/slider-5.jpg"
-import SLIDER_6 from "../images/slider-6.jpg"
+import React from "react"
+import styled from "styled-components"
 import Layout from "../components/layout"
+import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
 import {
-  SliderImage,
-  SlideShowGallery,
-  ImageButtonsContainer,
-  ImageButton,
-} from "../components/hotelStyled"
+  LOGO_DARK_BLUE_ANALOGUS_DARKER,
+  LOGO_DARK_BLUE_COMPLEMENT,
+  LOGO_DARK_BLUE,
+} from "../constants"
 
-const SECOND = 1000
-const TIME = 3 * SECOND
-const IMAGE_SRC_ARRAY = [
-  SLIDER_1,
-  SLIDER_2,
-  SLIDER_3,
-  SLIDER_4,
-  SLIDER_5,
-  SLIDER_6,
-]
-
-export default function AparthotelHomePage() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [timerRef, setTimerRef] = useState(null)
-  const [initialTimerRef, setInitialTimerRef] = useState(null)
-
-  const [isImageSelected, setIsImageSelected] = useState(false)
-
-  const handleImageButtonClick = index => {
-    setActiveIndex(index)
-    setIsImageSelected(true)
+const StyledCard = styled.div`
+  //background: #faf9f7;
+  //background #ffddbd;
+  // background: #fcebdc;
+  background: #fcf5ed;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  &:not(:first-child) {
+    margin-right: 0;
   }
-
-  const startSlideShow = () => {
-    setActiveIndex(
-      prevActiveIndex => (prevActiveIndex + 1) % IMAGE_SRC_ARRAY.length
-    )
+  &:not(:last-child) {
+    margin-left: 0;
   }
+`
+const BodyMainTitle = styled.div`
+  // color: ${LOGO_DARK_BLUE_ANALOGUS_DARKER};
+  color: ${LOGO_DARK_BLUE_COMPLEMENT};
 
-  useEffect(() => {
-    const timer = setInterval(startSlideShow, TIME)
-    setInitialTimerRef(timer)
-    return () => {
-      clearInterval(timer)
+  font-size: 2.2rem;
+  font-weight: bold;
+`
+const StyledCardTitle = styled.div`
+  color: ${LOGO_DARK_BLUE_COMPLEMENT};
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  min-height: 5rem;
+`
+const StyledCardLink = styled.div`
+  color: ${LOGO_DARK_BLUE_COMPLEMENT};
+  text-decoration: underline;
+  font-size 1.5rem;
+  text-align:center;
+  margin-top:1.5rem;
+  margin-bottom: 1.5rem;
 
-      setInitialTimerRef(null)
-    }
-  }, [])
+`
 
-  useEffect(() => {
-    if (isImageSelected) {
-      if (initialTimerRef !== null) {
-        clearInterval(initialTimerRef)
-      }
-      setIsImageSelected(false)
-      return () => {
-        let timer = setInterval(startSlideShow, TIME)
-        setTimerRef(timer)
-      }
-    }
-  }, [isImageSelected])
+const StyledLink = styled.div`
+color: ${LOGO_DARK_BLUE};
+text-decoration: underline;
+font-size 1.5rem;
+//text-align:center;
+margin-top:4rem;
+margin-bottom: 1.5rem;
+`
 
-  useEffect(() => () => clearInterval(timerRef), [timerRef])
-
+function Hotel() {
   return (
     <Layout>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <SlideShowGallery activeIndex={activeIndex}>
-          {IMAGE_SRC_ARRAY.map(imgSrc => (
-            <SliderImage key={imgSrc} src={imgSrc} />
-          ))}
-          <ImageButtonsContainer>
-            {IMAGE_SRC_ARRAY.map((imgSrc, index) => (
-              <ImageButton
-                key={imgSrc + index}
-                active={activeIndex === index}
-                onClick={() => handleImageButtonClick(index)}
-              />
-            ))}
-          </ImageButtonsContainer>
-        </SlideShowGallery>
+      <StaticImage
+        src="../images/slider-2.jpg"
+        alt="aparthotel-zaton-logo"
+        quality={100}
+        loading="eager"
+        layout="constrained"
+      />
+
+      <div style={{ marginTop: "5rem" }}>
+        <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
+        <div
+          style={{
+            marginTop: "5rem",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <StyledCard>
+            <StaticImage
+              src="../images/slider-3.jpg"
+              alt="aparthotel-zaton-logo"
+              quality={100}
+              loading="eager"
+              layout="constrained"
+            />
+            <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
+            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+          </StyledCard>
+          <StyledCard>
+            <StaticImage
+              src="../images/slider-4.jpg"
+              alt="aparthotel-zaton-logo"
+              quality={100}
+              loading="eager"
+              layout="constrained"
+            />
+
+            <StyledCardTitle>Premium soba s krevetom</StyledCardTitle>
+            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+          </StyledCard>
+          <StyledCard>
+            <StaticImage
+              src="../images/slider-5.jpg"
+              alt="aparthotel-zaton-logo"
+              quality={100}
+              loading="eager"
+              layout="constrained"
+            />
+
+            <StyledCardTitle>Premium soba s pogledom na bazen</StyledCardTitle>
+            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+          </StyledCard>
+        </div>
       </div>
+
+      <StyledLink>KORONAVIRUS MJERE</StyledLink>
+      <StaticImage
+        src="../images/slider-1.jpg"
+        alt="aparthotel-zaton-logo"
+        quality={100}
+        loading="eager"
+        layout="constrained"
+      />
     </Layout>
   )
 }
+
+export default Hotel

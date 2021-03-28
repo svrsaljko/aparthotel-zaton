@@ -8,6 +8,7 @@ import { IntlProvider } from "gatsby-plugin-react-intl"
 import PropTypes from "prop-types"
 import Header from "./header"
 import LanguageSelector from "../components/languageSelector"
+import Footer from "./footer"
 import "../css/index.css"
 import styled from "styled-components"
 
@@ -59,6 +60,7 @@ const Layout = ({ children }) => {
       <PageWrapper>
         <Header />
         {children}
+        <Footer />
       </PageWrapper>
     </>
   )

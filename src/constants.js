@@ -6,3 +6,10 @@ export const LOGO_DARK_BLUE = "#027bd4"
 
 export const LOGO_SUBTITLE_BLUE = "#008df7" // lighter color
 export const LOGO_TITLE_BLUE = "#018ff5" // darker color
+
+// other
+
+export const LOGO_DARK_BLUE_COMPLEMENT = "#d44b02"
+export const LOGO_DARK_BLUE_ANALOGUS_DARKER = "#2f02d4"
+
+export const TRIADIC_GOLD = "#d4b402"

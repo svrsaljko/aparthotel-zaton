@@ -43,18 +43,14 @@ const getLanguageFromPath = () => {
 }
 
 const LanguageSelector = () => {
-  //   console.log("props", props)
   // const showMenu = useSelector((state) => state.headerReducer.showMenu)
   const [currentLanguage, setCurrentLanguage] = useState(getLanguageFromPath())
-  //   console.log("current Language in selector: ", currentLanguage)
 
   const onChangeSelectedLanguage = language => {
     changeLocale(language.toLowerCase())
     // onLangChange(value)
     // setCurrentLanguage(language)
-    // console.log("change language to: ", language)
   }
-  //   console.log("currentLanguage: ", currentLanguage)
 
   const [availableLanguages, setAvailableLanguages] = useState([])
   const [showAvailableLanguages, setShowAvailableLanguages] = useState(false)
@@ -66,9 +62,6 @@ const LanguageSelector = () => {
       )
     }
   }, [])
-
-  console.log("show: ", showAvailableLanguages)
-  console.log("promjenaOPET")
 
   return (
     <div

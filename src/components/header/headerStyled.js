@@ -45,6 +45,7 @@ export const HamburgerMenuWrapper = styled.div`
 `
 
 export const NavBar = styled.div`
+  margin-bottom: 6rem;
   display: block;
   @media (max-width: 480px) {
     display: ${({ show }) => (show ? "flex" : "none")};
@@ -81,6 +82,6 @@ export const StarContainer = styled.div`
 `
 export const StarWrapper = styled.div`
 font-size:2.2rem;
-//color: ${LOGO_DARK_BLUE};
-color: ${LOGO_LIGHT_BLUE};
+color: ${LOGO_DARK_BLUE};
+//color: ${LOGO_LIGHT_BLUE};
 `

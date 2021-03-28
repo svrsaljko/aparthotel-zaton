@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { LOGO_LIGHT_BLUE, LOGO_DARK_BLUE } from "../../constants"
+import { LOGO_LIGHT_BLUE, LOGO_DARK_BLUE, TRIADIC_GOLD } from "../../constants"
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -82,6 +82,6 @@ export const StarContainer = styled.div`
 `
 export const StarWrapper = styled.div`
 font-size:2.2rem;
-color: ${LOGO_DARK_BLUE};
+color: ${TRIADIC_GOLD};
 //color: ${LOGO_LIGHT_BLUE};
 `

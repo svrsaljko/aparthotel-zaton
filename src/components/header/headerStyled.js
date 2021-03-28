@@ -4,6 +4,9 @@ import { LOGO_LIGHT_BLUE, LOGO_DARK_BLUE, TRIADIC_GOLD } from "../../constants"
 export const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `
 
 export const TitleWrapper = styled.div`
@@ -14,7 +17,24 @@ export const TitleWrapper = styled.div`
   @media (max-width: 480px) {
     //justify-content: space-between;
     // margin-bottom: 1rem;
+    magin-bottom: 0;
+    width: 100%;
   }
+`
+export const TitleContainerStyled = styled.div`
+  display: flex;
+  flexdirection: row;
+  justifycontent: space-between;
+  @media (max-width: 480px) {
+    width: 40%;
+  }
+`
+
+export const LanguageSelectorMailtoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 480px) {
+    width: 60%;
 `
 
 export const NavLinkWrapper = styled.div`
@@ -50,6 +70,7 @@ export const NavBar = styled.div`
   @media (max-width: 480px) {
     display: ${({ show }) => (show ? "flex" : "none")};
     flex-direction: column;
+    margin-bottom: 0;
   }
 `
 
@@ -60,6 +81,7 @@ export const TitleImageWrapper = styled.div`
   width: ${WIDTH}px;
   height: ${HEIGHT}px;
   @media (max-width: 480px) {
+    margin-top: 0.5rem;
     width: ${WIDTH * 0.6}px;
     height: ${HEIGHT * 0.6}px;
   }
@@ -76,7 +98,7 @@ export const StarContainer = styled.div`
   margin-top: 1.75rem;
   //margin-right: 3.5rem;
   @media (max-width: 480px) {
-    //margin-top: 1.5rem;
+    margin-top: 1.5rem;
     //margin-right: 1.5rem;
   }
 `
@@ -84,4 +106,8 @@ export const StarWrapper = styled.div`
 font-size:2.2rem;
 color: ${TRIADIC_GOLD};
 //color: ${LOGO_LIGHT_BLUE};
+@media (max-width: 480px) {
+  font-size:1.1rem;
+
+}
 `

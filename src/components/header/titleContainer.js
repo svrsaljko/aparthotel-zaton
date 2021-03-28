@@ -4,11 +4,13 @@ import LanguageSelector from "../languageSelector"
 import { displayNavLinkHamburger } from "../../actions/actions"
 import {
   TitleWrapper,
+  TitleContainerStyled,
   TitleImageWrapper,
   LogoImage,
   HamburgerMenuWrapper,
   StarContainer,
   StarWrapper,
+  LanguageSelectorMailtoWrapper,
   StarContainerWrapper,
 } from "./headerStyled"
 import Mailto from "../mailto"
@@ -23,22 +25,7 @@ const TitleContainer = () => {
 
   return (
     <TitleWrapper>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <HamburgerMenuWrapper show={showMenu}>
-          <Hamburger
-            duration={0.3}
-            // duration={0.4}
-
-            toggled={showMenu}
-            toggle={() => dispatch(displayNavLinkHamburger(!showMenu))}
-          />
-        </HamburgerMenuWrapper>
+      <TitleContainerStyled>
         <TitleImageWrapper>
           <StaticImage
             src="../../images/aparthotel-zaton-logo.jpeg"
@@ -54,6 +41,7 @@ const TitleContainer = () => {
           />
           {/* <LogoImage src={"../../images/aparthotel-zaton-logo.jpeg"} /> */}
         </TitleImageWrapper>
+
         <StarContainer>
           <StarWrapper>
             <FaStar />
@@ -65,11 +53,20 @@ const TitleContainer = () => {
             <FaStar />
           </StarWrapper>
         </StarContainer>
-      </div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      </TitleContainerStyled>
+      <LanguageSelectorMailtoWrapper>
         <LanguageSelector />
         <Mailto />
-      </div>
+        <HamburgerMenuWrapper show={showMenu}>
+          <Hamburger
+            duration={0.3}
+            // duration={0.4}
+
+            toggled={showMenu}
+            toggle={() => dispatch(displayNavLinkHamburger(!showMenu))}
+          />
+        </HamburgerMenuWrapper>
+      </LanguageSelectorMailtoWrapper>
     </TitleWrapper>
   )
 }

@@ -10,15 +10,21 @@ import { useSelector } from "react-redux"
 //const LanguageSelector = ({ initialLanguage, onLangChange }) => {
 
 const ActiveLanguageButton = styled.div`
-font-size: 2rem;
-margin-left: 1rem;
-margin-right: 1rem;
-max-height: 2.7rem;
-color: ${LOGO_LIGHT_BLUE};
-&:hover {
-  cursor: pointer;
-  border-top: 1px solid ${LOGO_DARK_BLUE};
-  border-bottom: 1px solid ${LOGO_DARK_BLUE};
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-height: 2.7rem;
+  color: ${LOGO_LIGHT_BLUE};
+  &:hover {
+    cursor: pointer;
+    border-top: 1px solid ${LOGO_DARK_BLUE};
+    border-bottom: 1px solid ${LOGO_DARK_BLUE};
+  }
+  @media (max-width: 480px) {
+    margin-right: 0;
+    margin-left: 1rem;
+    //border: 3px solid grey;
+  }
 `
 
 const LanguageButton = styled.div`
@@ -33,6 +39,53 @@ const LanguageButton = styled.div`
     cursor: pointer;
     border-top: 1px solid ${LOGO_DARK_BLUE};
     border-bottom: 1px solid ${LOGO_DARK_BLUE};
+  }
+  @media (max-width: 480px) {
+    margin-right: 0;
+    margin-left: 1rem;
+
+    //border: 3px solid grey;
+  }
+`
+
+const AvailableLanguagesContainer = styled.div`
+  min-width: 9rem;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 480px) {
+    min-width: auto;
+    margin: 0;
+    //border: 3px solid grey;
+  }
+`
+const AvailableLanguagesWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+const LanguageSelectorContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  min-width: 14rem;
+  min-height: 2.7rem;
+  @media (max-width: 480px) {
+    justify-content: flex-end;
+    //border: 3px solid blue;
+    min-width: auto;
+  }
+`
+
+const LanguageSelectorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (max-width: 480px) {
+    width: 80%;
+    //width: 80%;
+    //min-width:80%;
+    //border: 3px solid blue;
+    margin-top: 0.5rem;
   }
 `
 
@@ -64,42 +117,12 @@ const LanguageSelector = () => {
   }, [])
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        // border: "3px solid green",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          // justifyContent: "flex-end",
-          marginLeft: "2rem",
-          minWidth: "14rem",
-          minHeight: "2.7rem",
-          // border: "1px solid red",
-        }}
+    <LanguageSelectorWrapper>
+      <LanguageSelectorContainer
         onMouseLeave={() => setShowAvailableLanguages(false)}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <div
-            style={{
-              // border: "3px solid black",
-              minWidth: "9rem",
-              minHeight: "3rem",
-              display: "flex",
-              // display: showAvailableLanguages ? "flex" : "none",
-              flexDirection: "row",
-            }}
-          >
+        <AvailableLanguagesWrapper>
+          <AvailableLanguagesContainer>
             {availableLanguages.map(language => (
               <LanguageButton
                 show={showAvailableLanguages}
@@ -109,37 +132,16 @@ const LanguageSelector = () => {
                 {language}
               </LanguageButton>
             ))}
-          </div>
-        </div>
+          </AvailableLanguagesContainer>
+        </AvailableLanguagesWrapper>
 
-        {/* <div>
-        <div style={{ color: "red" }}> {currentLanguage} </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-        {availableLanguages.map(language => (
-          <div> {language} </div>
-          ))}
-          </div>
-        </div> */}
-
-        {/* <select
-        value={currentLanguage}
-        onChange={e => onChangeSelectedLanguage(e)}
-        >
-        {LANGUAGES.map(language => (
-          <option key={language} value={language}>
-          {language}
-          </option>
-          ))}
-        </select> */}
         <ActiveLanguageButton
           onMouseOver={() => setShowAvailableLanguages(true)}
         >
-          {" "}
           {currentLanguage}
-          {/* <RiArrowDownSLine />{" "} */}
         </ActiveLanguageButton>
-      </div>
-    </div>
+      </LanguageSelectorContainer>
+    </LanguageSelectorWrapper>
   )
 }
 

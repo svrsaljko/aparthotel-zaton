@@ -99,6 +99,16 @@ const ReviewBody = styled.div`
   font-size: 1.2rem;
 `
 
+const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5rem;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+`
+
 const reviews = [
   {
     customer: "Medo",
@@ -131,53 +141,44 @@ function Hotel() {
         layout="constrained"
       />
 
-      <div style={{ marginTop: "5rem" }}>
-        <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
-        <div
-          style={{
-            marginTop: "5rem",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <StyledCard>
-            <StaticImage
-              src="../images/slider-3.jpg"
-              alt="aparthotel-zaton-logo"
-              quality={100}
-              loading="eager"
-              layout="constrained"
-            />
-            <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
-            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-          </StyledCard>
-          <StyledCard>
-            <StaticImage
-              src="../images/slider-4.jpg"
-              alt="aparthotel-zaton-logo"
-              quality={100}
-              loading="eager"
-              layout="constrained"
-            />
+      <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
+      <CardsContainer>
+        <StyledCard>
+          <StaticImage
+            src="../images/slider-3.jpg"
+            alt="aparthotel-zaton-logo"
+            quality={100}
+            loading="eager"
+            layout="constrained"
+          />
+          <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
+          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+        </StyledCard>
+        <StyledCard>
+          <StaticImage
+            src="../images/slider-4.jpg"
+            alt="aparthotel-zaton-logo"
+            quality={100}
+            loading="eager"
+            layout="constrained"
+          />
 
-            <StyledCardTitle>Premium soba s krevetom</StyledCardTitle>
-            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-          </StyledCard>
-          <StyledCard>
-            <StaticImage
-              src="../images/slider-5.jpg"
-              alt="aparthotel-zaton-logo"
-              quality={100}
-              loading="eager"
-              layout="constrained"
-            />
+          <StyledCardTitle>Premium soba s krevetom</StyledCardTitle>
+          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+        </StyledCard>
+        <StyledCard>
+          <StaticImage
+            src="../images/slider-5.jpg"
+            alt="aparthotel-zaton-logo"
+            quality={100}
+            loading="eager"
+            layout="constrained"
+          />
 
-            <StyledCardTitle>Premium soba s pogledom na bazen</StyledCardTitle>
-            <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-          </StyledCard>
-        </div>
-      </div>
+          <StyledCardTitle>Premium soba s pogledom na bazen</StyledCardTitle>
+          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+        </StyledCard>
+      </CardsContainer>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>
         <StyledLink> KORONAVIRUS MJERE</StyledLink>

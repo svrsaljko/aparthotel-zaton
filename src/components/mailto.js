@@ -12,6 +12,9 @@ const MailtoWrapper = styled.div`
     cursor: pointer;
     color: ${LOGO_DARK_BLUE};
   }
+  @media (max-width: 480px) {
+    //border: 3px solid green;
+    margin-left: 1rem;
 `
 
 export default function Mailto() {

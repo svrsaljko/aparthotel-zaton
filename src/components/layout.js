@@ -21,6 +21,11 @@ const PageWrapper = styled.div`
   margin-right: 20rem;
   margin-left: 20rem;
   margin-top: 1rem;
+  @media (max-width: 480px) {
+    margin-right: 0;
+    margin-left: 0;
+    margin: 0;
+  }
 `
 
 // const mapDispatchToProps = dispatch => {
@@ -60,7 +65,6 @@ const Layout = ({ children }) => {
       <PageWrapper>
         <Header />
         {children}
-        <Footer />
       </PageWrapper>
     </>
   )

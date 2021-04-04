@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
-
+import { FormattedMessage, Link } from "gatsby-plugin-react-intl"
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
   LOGO_DARK_BLUE_COMPLEMENT,
@@ -138,13 +138,7 @@ const reviews = [
 ]
 
 function Hotel({ data }) {
-  console.log("data: ", data.allFile.cardImages)
-
-  const { cardImages } = data.allFile
-
-  // console.log("card images: ", cardImages)
-
-  // console.log("data: ", data)
+  const { cardImages } = data.allMarkdownRemark
 
   return (
     <Layout>
@@ -159,28 +153,23 @@ function Hotel({ data }) {
       <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
       <CardsContainer>
         {cardImages.map(({ cardImage }) => {
-          // const { src } = cardImage.childImageSharp
-          // const { srcSet } = cardImage.cardImage.childImageSharp.fluid
-
-          // console.log("source: ", src)
-          // console.log("srcSet: ", srcSet)
-          // const image = getImage(src)
-          // console.log("image: ", image)
-          console.log("card image: ", cardImage)
-          const image = getImage(cardImage)
-          console.log("image: ", image)
-          const { id } = cardImage
-          console.log("id: ", id)
+          const { featuredImage } = cardImage
+          const { id } = featuredImage.childImageSharp
+          const image = getImage(featuredImage)
           return (
             <StyledCard key={id}>
               <GatsbyImage
                 image={image}
                 alt="aparthotel-zaton-logo"
                 quality={100}
-                loading="eager"
-                //layout="constraint"
+                loading="lazy"
               />
-              <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
+              <StyledCardTitle>
+                <FormattedMessage
+                  id={cardImage.title}
+                  defaultMessage={"Accomodation"}
+                />
+              </StyledCardTitle>
               <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
             </StyledCard>
           )
@@ -251,38 +240,20 @@ function Hotel({ data }) {
 
 export const query = graphql`
   query CardImages {
-    allFile(
-      filter: { relativePath: { regex: "regex: /(hotel/accomodation)/" } }
-    ) {
-      cardImages: edges {
-        cardImage: node {
-          id
-          childImageSharp {
-            gatsbyImageData
+    allMarkdownRemark {
+      cardImages: nodes {
+        cardImage: frontmatter {
+          title
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData
+              id
+            }
           }
         }
       }
     }
   }
 `
-
-// export const query = graphql`
-//   query CardImages {
-//     allFile(
-//       filter: { relativePath: { regex: "regex: /(hotel/accomodation)/" } }
-//     ) {
-//       cardImages: edges {
-//         cardImage: node {
-//           id
-//           childImageSharp {
-//             fluid {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default Hotel

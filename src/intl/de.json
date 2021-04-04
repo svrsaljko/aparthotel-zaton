@@ -3,5 +3,8 @@
   "header.navlink.contact": "Kontaktieren sie uns",
   "header.navlink.accomodation": "Unterkunft",
   "header.navlink.destination": "Reiseziel",
-  "header.navlink.gallery": "Galerie"
+  "header.navlink.gallery": "Galerie",
+  "body.hotel.page.accomodation.title.1": "Premium Zimmer mit Balkon",
+  "body.hotel.page.accomodation.title.2": "Premium Zimmer mit Bett",
+  "body.hotel.page.accomodation.title.3": "Premium Zimmer mit Sofa"
 }

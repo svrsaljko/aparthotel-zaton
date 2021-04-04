@@ -3,5 +3,8 @@
   "header.navlink.contact": "Kontakt",
   "header.navlink.accomodation": "Smještaj",
   "header.navlink.destination": "Destinacija",
-  "header.navlink.gallery": "Galerija"
+  "header.navlink.gallery": "Galerija",
+  "body.hotel.page.accomodation.title.1": "Premium soba s balkonom",
+  "body.hotel.page.accomodation.title.2": "Premium soba s krevetom",
+  "body.hotel.page.accomodation.title.3": "Premium soba s kaučom"
 }

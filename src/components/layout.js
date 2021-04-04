@@ -70,9 +70,9 @@ const Layout = ({ children }) => {
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.object,
-}
+// Layout.propTypes = {
+//   children: PropTypes.object,
+// }
 
 // export default Layout
 export default connect(mapStateToProps, null)(Layout)

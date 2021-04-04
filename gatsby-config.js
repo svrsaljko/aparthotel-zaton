@@ -12,6 +12,24 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `data`,
+    //     path: `${__dirname}/src/data/`,
+    //     ignore: [`**/\.*`], // ignore files starting with a dot
+    //   },
+    // },
+
     {
       resolve: `gatsby-plugin-react-intl`,
       options: {
@@ -50,6 +68,22 @@ module.exports = {
         cleanupOnClient: true,
         // [optional] - name of key on `window` where serialized state will be stored, default:
         windowKey: "__PRELOADED_STATE__",
+      },
+    },
+
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // CommonMark mode (default: true)
+        commonmark: true,
+        // Footnotes mode (default: true)
+        footnotes: true,
+        // Pedantic mode (default: true)
+        pedantic: true,
+        // GitHub Flavored Markdown mode (default: true)
+        gfm: true,
+        // Plugins configs
+        plugins: [],
       },
     },
   ],

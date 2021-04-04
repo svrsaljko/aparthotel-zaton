@@ -1,7 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
+
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
   LOGO_DARK_BLUE_COMPLEMENT,
@@ -24,11 +26,16 @@ const StyledCard = styled.div`
   &:not(:last-child) {
     margin-left: 0;
   }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
 `
 const BodyMainTitle = styled.div`
   // color: ${LOGO_DARK_BLUE_ANALOGUS_DARKER};
   color: ${LOGO_DARK_BLUE_COMPLEMENT};
   //color:#9802d4;
+  margin-top:4rem;
   font-size: 2.2rem;
   font-weight: bold;
 `
@@ -130,7 +137,15 @@ const reviews = [
   },
 ]
 
-function Hotel() {
+function Hotel({ data }) {
+  console.log("data: ", data.allFile.cardImages)
+
+  const { cardImages } = data.allFile
+
+  // console.log("card images: ", cardImages)
+
+  // console.log("data: ", data)
+
   return (
     <Layout>
       <StaticImage
@@ -143,13 +158,43 @@ function Hotel() {
 
       <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
       <CardsContainer>
-        <StyledCard>
+        {cardImages.map(({ cardImage }) => {
+          // const { src } = cardImage.childImageSharp
+          // const { srcSet } = cardImage.cardImage.childImageSharp.fluid
+
+          // console.log("source: ", src)
+          // console.log("srcSet: ", srcSet)
+          // const image = getImage(src)
+          // console.log("image: ", image)
+          console.log("card image: ", cardImage)
+          const image = getImage(cardImage)
+          console.log("image: ", image)
+          const { id } = cardImage
+          console.log("id: ", id)
+          return (
+            <StyledCard key={id}>
+              <GatsbyImage
+                image={image}
+                alt="aparthotel-zaton-logo"
+                quality={100}
+                loading="eager"
+                //layout="constraint"
+              />
+              <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
+              <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+            </StyledCard>
+          )
+        })}
+
+        {/* <StyledCard>
           <StaticImage
             src="../images/slider-3.jpg"
             alt="aparthotel-zaton-logo"
             quality={100}
             loading="eager"
-            layout="constrained"
+            layout="constraint"
+            width={480}
+            height={320}
           />
           <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
           <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
@@ -177,7 +222,7 @@ function Hotel() {
 
           <StyledCardTitle>Premium soba s pogledom na bazen</StyledCardTitle>
           <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-        </StyledCard>
+        </StyledCard> */}
       </CardsContainer>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>
@@ -194,7 +239,7 @@ function Hotel() {
         <ReviewsContainerTitle>RECENZIJE GOSTIJU</ReviewsContainerTitle>
 
         {reviews.map((review, index) => (
-          <ReviewWrapper backgroundColor={index % 2 === 0}>
+          <ReviewWrapper key={index + 100} backgroundColor={index % 2 === 0}>
             <ReviewTitle> {review.customer} </ReviewTitle>
             <ReviewBody>{review.review}</ReviewBody>
           </ReviewWrapper>
@@ -203,5 +248,41 @@ function Hotel() {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query CardImages {
+    allFile(
+      filter: { relativePath: { regex: "regex: /(hotel/accomodation)/" } }
+    ) {
+      cardImages: edges {
+        cardImage: node {
+          id
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`
+
+// export const query = graphql`
+//   query CardImages {
+//     allFile(
+//       filter: { relativePath: { regex: "regex: /(hotel/accomodation)/" } }
+//     ) {
+//       cardImages: edges {
+//         cardImage: node {
+//           id
+//           childImageSharp {
+//             fluid {
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Hotel

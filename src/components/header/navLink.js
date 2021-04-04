@@ -1,4 +1,4 @@
-import React, { useCallback } from "react"
+import React from "react"
 
 // import { NavLink } from 'react-router-dom'
 // import { Link } from "gatsby"
@@ -21,11 +21,11 @@ const NavLink = ({ name, to }) => {
   const dispatch = useDispatch()
   const showMenu = useSelector(state => state.menuReducer.showMenu)
 
-  const onPageChange = useCallback(() => {
+  const onPageChange = () => {
     setTimeout(() => {
       dispatch(displayNavLinkHamburger(false))
     }, PAGE_CHANGE_TIME)
-  })
+  }
 
   return (
     <Link

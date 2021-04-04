@@ -6,12 +6,10 @@ import {
   TitleWrapper,
   TitleContainerStyled,
   TitleImageWrapper,
-  LogoImage,
   HamburgerMenuWrapper,
   StarContainer,
   StarWrapper,
   LanguageSelectorMailtoWrapper,
-  StarContainerWrapper,
 } from "./headerStyled"
 import Mailto from "../mailto"
 import { Divide as Hamburger } from "hamburger-react"

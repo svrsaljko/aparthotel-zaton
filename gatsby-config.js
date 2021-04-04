@@ -91,8 +91,6 @@ module.exports = {
         gfm: true,
         // Plugins configs
         plugins: [],
-        name: "data",
-        path: "${__dirname}/src/data",
       },
     },
   ],

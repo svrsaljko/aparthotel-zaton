@@ -3,20 +3,16 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
-import { FormattedMessage, Link } from "gatsby-plugin-react-intl"
+import { FormattedMessage } from "gatsby-plugin-react-intl"
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
   LOGO_DARK_BLUE_COMPLEMENT,
   LOGO_DARK_BLUE,
-  TETRADIC_PURPLE,
   LOGO_LIGHT_BLUE,
   TRIADIC_GOLD,
 } from "../constants"
 
 const StyledCard = styled.div`
-  //background: #faf9f7;
-  //background #ffddbd;
-  // background: #fcebdc;
   background: #fcf5ed;
   margin-right: 5rem;
   margin-left: 5rem;
@@ -174,44 +170,6 @@ function Hotel({ data }) {
             </StyledCard>
           )
         })}
-
-        {/* <StyledCard>
-          <StaticImage
-            src="../images/slider-3.jpg"
-            alt="aparthotel-zaton-logo"
-            quality={100}
-            loading="eager"
-            layout="constraint"
-            width={480}
-            height={320}
-          />
-          <StyledCardTitle>Premium soba s balkonom</StyledCardTitle>
-          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-        </StyledCard>
-        <StyledCard>
-          <StaticImage
-            src="../images/slider-4.jpg"
-            alt="aparthotel-zaton-logo"
-            quality={100}
-            loading="eager"
-            layout="constrained"
-          />
-
-          <StyledCardTitle>Premium soba s krevetom</StyledCardTitle>
-          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-        </StyledCard>
-        <StyledCard>
-          <StaticImage
-            src="../images/slider-5.jpg"
-            alt="aparthotel-zaton-logo"
-            quality={100}
-            loading="eager"
-            layout="constrained"
-          />
-
-          <StyledCardTitle>Premium soba s pogledom na bazen</StyledCardTitle>
-          <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
-        </StyledCard> */}
       </CardsContainer>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>

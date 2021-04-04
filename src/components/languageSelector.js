@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react"
-// import { useSelector } from 'react-redux'
 import { LANGUAGES } from "../constants"
 import { changeLocale } from "gatsby-plugin-react-intl"
-import { useLocation } from "@reach/router"
-import { RiArrowDownSLine } from "react-icons/ri"
 import { LOGO_LIGHT_BLUE, LOGO_DARK_BLUE } from "../constants"
 import styled from "styled-components"
-import { useSelector } from "react-redux"
-//const LanguageSelector = ({ initialLanguage, onLangChange }) => {
 
 const ActiveLanguageButton = styled.div`
   font-size: 2rem;
@@ -97,8 +92,8 @@ const getLanguageFromPath = () => {
 
 const LanguageSelector = () => {
   // const showMenu = useSelector((state) => state.headerReducer.showMenu)
-  const [currentLanguage, setCurrentLanguage] = useState(getLanguageFromPath())
-
+  //const [currentLanguage, setCurrentLanguage] = useState(getLanguageFromPath())
+  let currentLanguage = getLanguageFromPath()
   const onChangeSelectedLanguage = language => {
     changeLocale(language.toLowerCase())
     // onLangChange(value)
@@ -114,7 +109,7 @@ const LanguageSelector = () => {
         LANGUAGES.filter(language => language !== currentLanguage)
       )
     }
-  }, [])
+  }, [currentLanguage])
 
   return (
     <LanguageSelectorWrapper>

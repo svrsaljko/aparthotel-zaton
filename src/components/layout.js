@@ -3,12 +3,7 @@ import Helemet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { connect } from "react-redux"
 
-import { IntlProvider } from "gatsby-plugin-react-intl"
-// import store from "../state/createStore"
-import PropTypes from "prop-types"
 import Header from "./header"
-import LanguageSelector from "../components/languageSelector"
-import Footer from "./footer"
 import "../css/index.css"
 import styled from "styled-components"
 

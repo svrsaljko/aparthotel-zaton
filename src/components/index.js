@@ -1,3 +1,3 @@
 import Header from "./header"
-
-export { Header }
+import Accomodation from "./accomodation"
+export { Header, Accomodation }

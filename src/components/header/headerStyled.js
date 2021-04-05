@@ -59,6 +59,8 @@ export const HamburgerMenuWrapper = styled.div`
     display: flex;
     flex-direction: column;
     //justify-content: center;
+    // border: 3px solid black;
+    margin-right: -0.75rem;
     color: ${({ show }) => (show ? LOGO_LIGHT_BLUE : LOGO_DARK_BLUE)};
     color: ${LOGO_DARK_BLUE};
   }

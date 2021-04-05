@@ -1,9 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+import { v4 as uuidv4 } from "uuid"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FormattedMessage } from "gatsby-plugin-react-intl"
+import { genericHashLink } from "react-router-hash-link"
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
   LOGO_DARK_BLUE_COMPLEMENT,
@@ -11,6 +13,8 @@ import {
   LOGO_LIGHT_BLUE,
   TRIADIC_GOLD,
 } from "../constants"
+
+const HashLink = genericHashLink(Link)
 
 const StyledCard = styled.div`
   background: #fcf5ed;
@@ -25,6 +29,7 @@ const StyledCard = styled.div`
 
   @media (max-width: 480px) {
     margin: 0;
+    margin-bottom: 3rem;
   }
 `
 const BodyMainTitle = styled.div`
@@ -109,6 +114,15 @@ const CardsContainer = styled.div`
   margin-top: 5rem;
   @media (max-width: 480px) {
     flex-direction: column;
+    //margin-right: -1.5rem;
+    //margin-left: -1.5rem;
+  }
+`
+
+const ImageWrapper = styled.div`
+  @media (max-width: 480px) {
+    //margin-right: -1.5rem;
+    //margin-left: -1.5rem;
   }
 `
 
@@ -138,35 +152,44 @@ function Hotel({ data }) {
 
   return (
     <Layout>
-      <StaticImage
-        src="../images/slider-2.jpg"
-        alt="aparthotel-zaton-logo"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
+      <ImageWrapper>
+        <StaticImage
+          src="../images/slider-2.jpg"
+          alt="aparthotel-zaton-logo"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
 
       <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
       <CardsContainer>
         {cardImages.map(({ cardImage }) => {
           const { featuredImage } = cardImage
-          const { id } = featuredImage.childImageSharp
+          const { title } = cardImage
+          const titleArray = title.split(".")
+          // ubaciti u markdown nakraju
+          const hashLink = "#" + titleArray[3] + titleArray[5]
+          console.log("hashLInk: ", hashLink)
+          //const { id } = featuredImage.childImageSharp
           const image = getImage(featuredImage)
           return (
-            <StyledCard key={id}>
+            <StyledCard key={uuidv4()}>
               <GatsbyImage
                 image={image}
+                // alt prominit-prijevod
                 alt="aparthotel-zaton-logo"
                 quality={100}
                 loading="lazy"
               />
               <StyledCardTitle>
-                <FormattedMessage
-                  id={cardImage.title}
-                  defaultMessage={"Accomodation"}
-                />
+                <FormattedMessage id={title} defaultMessage={"Accomodation"} />
               </StyledCardTitle>
-              <StyledCardLink> PRIKAŽI POJEDINOSTI </StyledCardLink>
+              <StyledCardLink>
+                {/* <a href="/en/accomodation#accomodation3">PRIKAI POJEDINOSTI</a> */}
+                {/* <HashLink to={`en/${hashLink}`}>PRIKAŽI POJEDINOSTI</HashLink> */}
+                PRIKAŽI POJEDINOSTI
+              </StyledCardLink>
             </StyledCard>
           )
         })}
@@ -198,14 +221,15 @@ function Hotel({ data }) {
 
 export const query = graphql`
   query CardImages {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/(data/hotel/accomodation)/" } }
+    ) {
       cardImages: nodes {
         cardImage: frontmatter {
           title
           featuredImage {
             childImageSharp {
               gatsbyImageData
-              id
             }
           }
         }

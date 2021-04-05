@@ -24,7 +24,7 @@ const IMAGE_SRC_ARRAY = [
   SLIDER_6,
 ]
 
-export default function AparthotelHomePage() {
+export default function SlideShow() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [timerRef, setTimerRef] = useState(null)
   const [initialTimerRef, setInitialTimerRef] = useState(null)
@@ -68,29 +68,27 @@ export default function AparthotelHomePage() {
   useEffect(() => () => clearInterval(timerRef), [timerRef])
 
   return (
-    <Layout>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <SlideShowGallery activeIndex={activeIndex}>
-          {IMAGE_SRC_ARRAY.map(imgSrc => (
-            <SliderImage key={imgSrc} src={imgSrc} />
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <SlideShowGallery activeIndex={activeIndex}>
+        {IMAGE_SRC_ARRAY.map(imgSrc => (
+          <SliderImage key={imgSrc} src={imgSrc} />
+        ))}
+        <ImageButtonsContainer>
+          {IMAGE_SRC_ARRAY.map((imgSrc, index) => (
+            <ImageButton
+              key={imgSrc + index}
+              active={activeIndex === index}
+              onClick={() => handleImageButtonClick(index)}
+            />
           ))}
-          <ImageButtonsContainer>
-            {IMAGE_SRC_ARRAY.map((imgSrc, index) => (
-              <ImageButton
-                key={imgSrc + index}
-                active={activeIndex === index}
-                onClick={() => handleImageButtonClick(index)}
-              />
-            ))}
-          </ImageButtonsContainer>
-        </SlideShowGallery>
-      </div>
-    </Layout>
+        </ImageButtonsContainer>
+      </SlideShowGallery>
+    </div>
   )
 }

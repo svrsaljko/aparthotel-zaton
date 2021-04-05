@@ -57,7 +57,7 @@ const ImagesMenuContainer = styled.div`
 `
 const MenuImage = styled.div`
   // border: 1px solid black;
-  opacity: 0.5;
+  opacity: ${({ active }) => (active ? 1 : 0.5)};
 `
 export {
   Card,

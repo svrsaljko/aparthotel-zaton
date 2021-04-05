@@ -170,7 +170,6 @@ function Hotel({ data }) {
           const titleArray = title.split(".")
           // ubaciti u markdown nakraju
           const hashLink = "#" + titleArray[3] + titleArray[5]
-          console.log("hashLInk: ", hashLink)
           //const { id } = featuredImage.childImageSharp
           const image = getImage(featuredImage)
           return (

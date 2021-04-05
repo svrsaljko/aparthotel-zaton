@@ -14,9 +14,15 @@ import {
 } from "./styled"
 import Description from "./description"
 
-const Accomodation = ({ title, firstImage, images, description, hashLink }) => {
+// first image maknit iz parenta
+const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
   // const ref = useRef(hashLink)
   // console.log("refff: ", ref)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeImage, setActiveImage] = useState(
+    getImage(images[activeIndex].featuredImage)
+  )
+
   return (
     <Card
     //id={hashLink}
@@ -28,16 +34,23 @@ const Accomodation = ({ title, firstImage, images, description, hashLink }) => {
       <ImagesContainer>
         <MainImageAndDescriptionContainer>
           <MainImageContainer>
-            <GatsbyImage image={firstImage} alt="accomodation-main-image" />
+            <GatsbyImage image={activeImage} alt="accomodation-main-image" />
           </MainImageContainer>
           <Description description={description} />
         </MainImageAndDescriptionContainer>
 
         <ImagesMenuContainer>
-          {images.map(({ featuredImage }) => {
+          {images.map(({ featuredImage }, index) => {
             const image = getImage(featuredImage)
             return (
-              <MenuImage key={uuidv4()}>
+              <MenuImage
+                onClick={() => {
+                  setActiveIndex(index)
+                  setActiveImage(getImage(images[index].featuredImage))
+                }}
+                active={activeIndex === index}
+                key={uuidv4()}
+              >
                 <GatsbyImage image={image} alt="accomodation-main-image" />
               </MenuImage>
             )

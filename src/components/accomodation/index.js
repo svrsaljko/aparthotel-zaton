@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { v4 as uuidv4 } from "uuid"
 import { FormattedMessage } from "gatsby-plugin-react-intl"
-import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
 import MainImage from "./mainImage"
 import {
   Card,
@@ -10,12 +9,10 @@ import {
   ImagesContainer,
   MainImageAndDescriptionContainer,
   MainImageContainer,
-  DescriptionContainer,
   ImagesMenuContainer,
   MenuImage,
 } from "./styled"
 import Description from "./description"
-import styled from "styled-components"
 
 // first image maknit iz parenta
 const Accomodation = ({ title, images, description, firstImage, hashLink }) => {

@@ -3,7 +3,6 @@ import { FormattedMessage } from "gatsby-plugin-react-intl"
 import { DescriptionContainer } from "./styled"
 import { FaChild, FaBed, FaStar } from "react-icons/fa"
 import { ImMan } from "react-icons/im"
-import { GrView } from "react-icons/gr"
 import { GiStickFrame } from "react-icons/gi"
 import { AiOutlineEye } from "react-icons/ai"
 import styled from "styled-components"
@@ -12,21 +11,40 @@ import { TRIADIC_GOLD } from "../../constants"
 const DescriptionRowElement = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 480px) {
+    // display: none;
+    // border: 3px solid red;
+    margin-top: 0.5rem;
+    height: auto;
+  }
 `
 const IconWrapper = styled.div`
   font-size: 2.2rem;
   color: ${TRIADIC_GOLD};
   @media (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    margin-top: 0.35rem;
   }
 `
+
+const DescriptionText = styled.div`
+  font-size: 1.5rem;
+
+  @media (max-width: 480px) {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+`
+
 const DescriptionWrapper = styled.div`
   margin-left: 2rem;
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+
+  // border: 3px solid red;
+  height: auto;
 `
 const DescriptionRowWrapper = styled.div`
   display: flex;
@@ -38,16 +56,18 @@ const RowText = styled.div`
   font-size: 1.2rem;
   margin-top: 0.5rem;
   margin-left: 1.5rem;
+  // border: 3px solid green;
+  height: auto;
 `
 
 const description = ({ description }) => {
   return (
     <DescriptionContainer>
       <DescriptionWrapper>
-        <div style={{ fontSize: "1.5rem" }}>
+        <DescriptionText>
           Our premium family room with a sea view is bathed with sun and offers
           an unforgettable experience of enjoying the romantic sunsets.
-        </div>
+        </DescriptionText>
         <DescriptionRowWrapper>
           <DescriptionRowElement>
             <IconWrapper>

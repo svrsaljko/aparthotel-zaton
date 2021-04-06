@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { v4 as uuidv4 } from "uuid"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FormattedMessage } from "gatsby-plugin-react-intl"
-import { genericHashLink } from "react-router-hash-link"
+// import { genericHashLink } from "react-router-hash-link"
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
   LOGO_DARK_BLUE_COMPLEMENT,
@@ -14,7 +14,7 @@ import {
   TRIADIC_GOLD,
 } from "../constants"
 
-const HashLink = genericHashLink(Link)
+// const HashLink = genericHashLink(Link)
 
 const StyledCard = styled.div`
   background: #fcf5ed;
@@ -167,9 +167,9 @@ function Hotel({ data }) {
         {cardImages.map(({ cardImage }) => {
           const { featuredImage } = cardImage
           const { title } = cardImage
-          const titleArray = title.split(".")
+          // const titleArray = title.split(".")
           // ubaciti u markdown nakraju
-          const hashLink = "#" + titleArray[3] + titleArray[5]
+          // const hashLink = "#" + titleArray[3] + titleArray[5]
           //const { id } = featuredImage.childImageSharp
           const image = getImage(featuredImage)
           return (

@@ -15,7 +15,7 @@ const LeftArrowWrapper = styled.div`
     opacity: 1;
   }
   @media (max-width: 480px) {
-    display: none;
+    //display: none;
   }
 `
 
@@ -32,7 +32,7 @@ const RightArrowWrapper = styled.div`
     opacity: 1;
   }
   @media (max-width: 480px) {
-    display: none;
+    //display: none;
   }
 `
 

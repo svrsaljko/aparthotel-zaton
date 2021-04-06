@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { v4 as uuidv4 } from "uuid"
 import { FormattedMessage } from "gatsby-plugin-react-intl"
+import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
+import MainImage from "./mainImage"
 import {
   Card,
   Title,
@@ -13,6 +15,7 @@ import {
   MenuImage,
 } from "./styled"
 import Description from "./description"
+import styled from "styled-components"
 
 // first image maknit iz parenta
 const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
@@ -23,6 +26,20 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
     getImage(images[activeIndex].featuredImage)
   )
 
+  const setImage = index => {
+    setActiveIndex(index)
+    setActiveImage(getImage(images[index].featuredImage))
+  }
+
+  const nextImageOnClick = () => {
+    const index = activeIndex === images.length - 1 ? 0 : activeIndex + 1
+    setImage(index)
+  }
+
+  const prevImageOnClick = () => {
+    const index = activeIndex === 0 ? images.length - 1 : activeIndex - 1
+    setImage(index)
+  }
   return (
     <Card
     //id={hashLink}
@@ -34,7 +51,11 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
       <ImagesContainer>
         <MainImageAndDescriptionContainer>
           <MainImageContainer>
-            <GatsbyImage image={activeImage} alt="accomodation-main-image" />
+            <MainImage
+              nextImageOnClick={nextImageOnClick}
+              prevImageOnClick={prevImageOnClick}
+              activeImage={activeImage}
+            />
           </MainImageContainer>
           <Description description={description} />
         </MainImageAndDescriptionContainer>
@@ -45,8 +66,7 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
             return (
               <MenuImage
                 onClick={() => {
-                  setActiveIndex(index)
-                  setActiveImage(getImage(images[index].featuredImage))
+                  setImage(index)
                 }}
                 active={activeIndex === index}
                 key={uuidv4()}

@@ -9,6 +9,7 @@ import styled from "styled-components"
 
 const Card = styled.div`
   margin-top: 5rem;
+  height: 100%;
   // border: 2px solid red;
 `
 
@@ -19,6 +20,7 @@ const Title = styled.div`
   //text-align: center;
   //margin-top: 1.5rem;
   //min-height: 5rem;
+  height: 10%;
   @media (max-width: 480px) {
     //margin-right: -1.5rem;
     //margin-left: -1.5rem;
@@ -26,6 +28,7 @@ const Title = styled.div`
 `
 const ImagesContainer = styled.div`
   display: flex;
+  height: 90%;
   flex-direction: column;
   background: #fcf5ed;
 `
@@ -33,12 +36,15 @@ const ImagesContainer = styled.div`
 const MainImageAndDescriptionContainer = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
   width: 100%;
 `
 
 const MainImageContainer = styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
+  height: 100%;
   width: 70%;
   // border: 3px solid red;
 `
@@ -51,6 +57,7 @@ const DescriptionContainer = styled.div`
 const ImagesMenuContainer = styled.div`
   display: flex;
   flex-direction: row;
+  height: 20%;
   @media (max-width: 480px) {
     display: none;
   }

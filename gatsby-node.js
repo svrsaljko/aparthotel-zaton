@@ -5,3 +5,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
     })
   }
 }
+
+exports.createPages = async props => {
+  // console.log("STOOOOOOOOO JE OVO: props:", props)
+}

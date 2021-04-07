@@ -11,7 +11,7 @@ const Card = styled.div`
   // margin-top: 5rem;
   //height: 100%;
   // border: 2px solid red;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
   // &:not:first-child {
     // border: 3px solid green;
     // margin-top: 3rem;

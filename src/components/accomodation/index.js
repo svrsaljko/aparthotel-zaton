@@ -39,6 +39,7 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
   }
   return (
     <Card
+    // fragment tu ako je visak
     //id={hashLink}
     //ref={ref}
     >

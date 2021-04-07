@@ -29,7 +29,7 @@ const Title = styled.div`
   height: 10%;
   @media (max-width: 480px) {
     //margin-right: -1.5rem;
-    //margin-left: -1.5rem;
+    margin-left: 1rem;
   }
 `
 const ImagesContainer = styled.div`

@@ -39,6 +39,10 @@ const BodyMainTitle = styled.div`
   margin-top:4rem;
   font-size: 2.2rem;
   font-weight: bold;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+    //margin-bottom: 3rem;
+  }
 `
 const BodyTitle = styled.div`
   color: ${LOGO_DARK_BLUE};
@@ -86,6 +90,9 @@ const ReviewsContainerTitle = styled.div`
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+  }
 `
 
 const ReviewWrapper = styled.div`
@@ -101,10 +108,16 @@ const ReviewTitle = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+  }
 `
 const ReviewBody = styled.div`
   color: ${TRIADIC_GOLD};
   font-size: 1.2rem;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+  }
 `
 
 const CardsContainer = styled.div`
@@ -121,8 +134,16 @@ const CardsContainer = styled.div`
 
 const ImageWrapper = styled.div`
   @media (max-width: 480px) {
-    //margin-right: -1.5rem;
-    //margin-left: -1.5rem;
+    // margin-right: -1.5rem;
+    // margin-left: -1.5rem;
+  }
+`
+
+const CoronaText = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
   }
 `
 
@@ -193,10 +214,10 @@ function Hotel({ data }) {
           )
         })}
       </CardsContainer>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <CoronaText>
         <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>
         <StyledLink> KORONAVIRUS MJERE</StyledLink>
-      </div>
+      </CoronaText>
       <StaticImage
         src="../images/slider-1.jpg"
         alt="aparthotel-zaton-logo"

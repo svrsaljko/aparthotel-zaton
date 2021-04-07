@@ -60,7 +60,7 @@ export const HamburgerMenuWrapper = styled.div`
     flex-direction: column;
     //justify-content: center;
     // border: 3px solid black;
-    margin-right: -0.75rem;
+    //margin-right: -0.75rem;
     color: ${({ show }) => (show ? LOGO_LIGHT_BLUE : LOGO_DARK_BLUE)};
     color: ${LOGO_DARK_BLUE};
   }
@@ -83,6 +83,7 @@ export const TitleImageWrapper = styled.div`
   width: ${WIDTH}px;
   height: ${HEIGHT}px;
   @media (max-width: 480px) {
+    margin-left: 0.75rem;
     margin-top: 0.5rem;
     width: ${WIDTH * 0.6}px;
     height: ${HEIGHT * 0.6}px;

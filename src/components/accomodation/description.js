@@ -32,6 +32,7 @@ const DescriptionText = styled.div`
 
   @media (max-width: 480px) {
     margin-top: 1.5rem;
+    //margin-left: 1rem;
     font-size: 1.5rem;
   }
 `
@@ -45,6 +46,9 @@ const DescriptionWrapper = styled.div`
 
   // border: 3px solid red;
   height: auto;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+  }
 `
 const DescriptionRowWrapper = styled.div`
   display: flex;

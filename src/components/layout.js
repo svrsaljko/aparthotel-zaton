@@ -17,8 +17,9 @@ const PageWrapper = styled.div`
   margin-left: 20rem;
   margin-top: 1rem;
   @media (max-width: 480px) {
-    margin-right: 1rem;
-    margin-left: 1rem;
+    // margin-right: 0.1rem;
+    // margin-left: 0.1rem;
+    margin: 0;
   }
 `
 

@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { FormattedMessage, navigate } from "gatsby-plugin-react-intl"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { v4 as uuidv4 } from "uuid"
@@ -95,10 +96,7 @@ const ImageContainer = styled.div`
 `
 
 export default function DestinationPage({ data }) {
-  console.log("data:", data)
-
   const { cards } = data.allMarkdownRemark
-
   return (
     <Layout>
       <Container>
@@ -107,12 +105,12 @@ export default function DestinationPage({ data }) {
             briefDescription,
             featuredImage,
             featuredImage_alt,
-            //slug,
+            slug,
             title,
           } = card
-          console.log("title: ", title)
           const image = getImage(featuredImage)
           const reverse = index % 2 === 1
+          const regionBlogPath = "/destination/" + slug
           return (
             <CardContainer reverse={reverse} key={uuidv4()}>
               <Description>
@@ -121,7 +119,13 @@ export default function DestinationPage({ data }) {
                   {briefDescription}
                 </BriefDescription>
                 <ButtonWrapper reverse={reverse}>
-                  <ReadMoreButton>READ MORE</ReadMoreButton>
+                  <ReadMoreButton
+                    onClick={() => {
+                      navigate(regionBlogPath)
+                    }}
+                  >
+                    READ MORE
+                  </ReadMoreButton>
                 </ButtonWrapper>
               </Description>
               <ImageContainer>

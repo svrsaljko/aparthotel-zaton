@@ -20,9 +20,9 @@ export default function AccomodationPage({ data }) {
           const { title, images, description } = accomodation
           const firstFeaturedImage = images[0].featuredImage
           const firstImage = getImage(firstFeaturedImage)
-          const titleArray = title.split(".")
+          //const titleArray = title.split(".")
           // ubaciti u markdown nakraju
-          const hashLink = "#" + titleArray[3] + titleArray[5]
+          //const hashLink = "#" + titleArray[3] + titleArray[5]
           return (
             <Accomodation
               key={uuidv4()}
@@ -30,7 +30,7 @@ export default function AccomodationPage({ data }) {
               firstImage={firstImage}
               images={images}
               description={description}
-              hashLink={hashLink}
+              //hashLink={hashLink}
             />
           )
         })}

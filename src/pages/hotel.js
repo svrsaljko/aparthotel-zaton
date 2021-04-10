@@ -1,10 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import GoogleMaps from "../components/googleMaps"
 import { graphql } from "gatsby"
 import { v4 as uuidv4 } from "uuid"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
-import { FormattedMessage } from "gatsby-plugin-react-intl"
+import { FormattedMessage, navigate } from "gatsby-plugin-react-intl"
 // import { genericHashLink } from "react-router-hash-link"
 import {
   LOGO_DARK_BLUE_ANALOGUS_DARKER,
@@ -168,6 +169,17 @@ const reviews = [
   },
 ]
 
+const DetailsButton = styled.button`
+  background: ${TRIADIC_GOLD};
+  color: white;
+  padding: 1.5rem;
+  border: none;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 function Hotel({ data }) {
   const { cardImages } = data.allMarkdownRemark
 
@@ -205,11 +217,13 @@ function Hotel({ data }) {
               <StyledCardTitle>
                 <FormattedMessage id={title} defaultMessage={"Accomodation"} />
               </StyledCardTitle>
-              <StyledCardLink>
-                {/* <a href="/en/accomodation#accomodation3">PRIKAI POJEDINOSTI</a> */}
-                {/* <HashLink to={`en/${hashLink}`}>PRIKAŽI POJEDINOSTI</HashLink> */}
-                PRIKAŽI POJEDINOSTI
-              </StyledCardLink>
+              <DetailsButton
+                onClick={() => {
+                  navigate("/accomodation/")
+                }}
+              >
+                PRIKAZI POJEDINOSTI
+              </DetailsButton>
             </StyledCard>
           )
         })}
@@ -235,6 +249,7 @@ function Hotel({ data }) {
           </ReviewWrapper>
         ))}
       </ReviewsContainer>
+      <GoogleMaps />
     </Layout>
   )
 }

@@ -6,11 +6,8 @@ import MainImage from "./mainImage"
 import {
   Card,
   Title,
-  ImagesContainer,
   MainImageAndDescriptionContainer,
   MainImageContainer,
-  ImagesMenuContainer,
-  MenuImage,
 } from "./styled"
 import Description from "./description"
 
@@ -45,19 +42,19 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
       <Title>
         <FormattedMessage id={title} defaultMessage={"accomodation"} />
       </Title>
-      <ImagesContainer>
-        <MainImageAndDescriptionContainer>
-          <MainImageContainer>
-            <MainImage
-              nextImageOnClick={nextImageOnClick}
-              prevImageOnClick={prevImageOnClick}
-              activeImage={activeImage}
-            />
-          </MainImageContainer>
-          <Description description={description} />
-        </MainImageAndDescriptionContainer>
+      {/* <ImagesContainer> */}
+      <MainImageAndDescriptionContainer>
+        <MainImageContainer>
+          <MainImage
+            nextImageOnClick={nextImageOnClick}
+            prevImageOnClick={prevImageOnClick}
+            activeImage={activeImage}
+          />
+        </MainImageContainer>
+        <Description description={description} />
+      </MainImageAndDescriptionContainer>
 
-        <ImagesMenuContainer>
+      {/* <ImagesMenuContainer>
           {images.map(({ featuredImage }, index) => {
             const image = getImage(featuredImage)
             return (
@@ -72,8 +69,8 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
               </MenuImage>
             )
           })}
-        </ImagesMenuContainer>
-      </ImagesContainer>
+        </ImagesMenuContainer> */}
+      {/* </ImagesContainer> */}
     </Card>
   )
 }

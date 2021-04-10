@@ -11,6 +11,7 @@ import { TRIADIC_GOLD } from "../../constants"
 const DescriptionRowElement = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top: 1.5rem;
   @media (max-width: 480px) {
     // display: none;
     // border: 3px solid red;
@@ -53,7 +54,8 @@ const DescriptionWrapper = styled.div`
 const DescriptionRowWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 15rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 `
 
 const RowText = styled.div`

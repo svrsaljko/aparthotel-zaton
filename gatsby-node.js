@@ -1,5 +1,9 @@
 const path = require("path")
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   if (getConfig().mode === "production" || getConfig().mode === "development") {
     actions.setWebpackConfig({

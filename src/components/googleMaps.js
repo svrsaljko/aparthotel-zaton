@@ -1,37 +1,51 @@
-import React, { useState, Component } from "react"
+import React, { memo } from "react"
 import {
   GoogleMap,
-  useLoadScript,
+  // useLoadScript,
   LoadScript,
-  useJsApiLoader,
-  Marker,
+  // useJsApiLoader,
+  // Marker,
 } from "@react-google-maps/api"
+import styled from "styled-components"
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "100%",
+  height: "100%",
 }
 
 const center = {
   lat: 44.2253927,
   lng: 15.1745283,
 }
+
+const Container = styled.div`
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 480px) {
+    height: 300px;
+  }
+`
+
 function GoogleMaps() {
   return (
-    <LoadScript
-    //      googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY_DEV}`}
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        // mapContainerClassName="google-map"
-        center={center}
-        zoom={16}
+    <Container>
+      <LoadScript
+        googleMapsApiKey={`${process.env.GATSBY_GOOGLE_MAPS_API_KEY}`}
       >
-        {/* Child components, such as markers, info windows, etc. */}
-        <></>
-      </GoogleMap>
-    </LoadScript>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          //mapContainerClassName="google-map"
+          center={center}
+          zoom={16}
+        >
+          {/* Child components, such as markers, info windows, etc. */}
+          <></>
+        </GoogleMap>
+      </LoadScript>
+    </Container>
   )
 }
 
-export default React.memo(GoogleMaps)
+export default memo(GoogleMaps)

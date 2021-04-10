@@ -17,7 +17,6 @@ import Description from "./description"
 // first image maknit iz parenta
 const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
   // const ref = useRef(hashLink)
-  // console.log("refff: ", ref)
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeImage, setActiveImage] = useState(
     getImage(images[activeIndex].featuredImage)

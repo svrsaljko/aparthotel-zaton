@@ -15,3 +15,5 @@ export const LOGO_DARK_BLUE_ANALOGUS_DARKER = "#2f02d4"
 
 export const TRIADIC_GOLD = "#d4b402"
 export const TETRADIC_PURPLE = "#9802d4"
+
+export const CARD_BACKGROUND_ORANGE = "#fcf5ed"

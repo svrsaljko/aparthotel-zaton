@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { FormattedMessage, navigate } from "gatsby-plugin-react-intl"
+import { navigate } from "gatsby-plugin-react-intl"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { v4 as uuidv4 } from "uuid"
@@ -11,10 +11,11 @@ import {
   // LOGO_DARK_BLUE,
   // LOGO_LIGHT_BLUE,
   TRIADIC_GOLD,
+  CARD_BACKGROUND_ORANGE,
 } from "../constants"
 
 const Container = styled.div`
-  background: #fcf5ed;
+  background: ${CARD_BACKGROUND_ORANGE};
   display: flex;
   flex-direction: column;
 `

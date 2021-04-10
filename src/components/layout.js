@@ -28,8 +28,6 @@ const PageWrapper = styled.div`
 // }
 
 const Layout = ({ children }) => {
-  // console.log("children: ", Layout)
-
   const data = useStaticQuery(graphql`
     query MyQuery {
       site {

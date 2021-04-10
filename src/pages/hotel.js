@@ -35,8 +35,8 @@ const StyledCard = styled.div`
 `
 const BodyMainTitle = styled.div`
   // color: ${LOGO_DARK_BLUE_ANALOGUS_DARKER};
-  color: ${LOGO_DARK_BLUE_COMPLEMENT};
-  //color:#9802d4;
+  //color: ${LOGO_DARK_BLUE_COMPLEMENT};
+  color: ${LOGO_DARK_BLUE};
   margin-top:4rem;
   font-size: 2.2rem;
   font-weight: bold;
@@ -170,12 +170,15 @@ const reviews = [
 ]
 
 const DetailsButton = styled.button`
-  background: ${TRIADIC_GOLD};
+  // background: ${TRIADIC_GOLD};
+  background: ${LOGO_LIGHT_BLUE};
   color: white;
   padding: 1.5rem;
   border: none;
   width: 100%;
   &:hover {
+    background: ${LOGO_DARK_BLUE};
+
     cursor: pointer;
   }
 `

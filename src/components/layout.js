@@ -2,7 +2,7 @@ import React from "react"
 import Helemet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { connect } from "react-redux"
-
+import Footer from "./footer"
 import Header from "./header"
 import "../css/index.css"
 import styled from "styled-components"
@@ -58,6 +58,7 @@ const Layout = ({ children }) => {
       <PageWrapper>
         <Header />
         {children}
+        <Footer />
       </PageWrapper>
     </>
   )

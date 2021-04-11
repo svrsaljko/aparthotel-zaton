@@ -14,11 +14,21 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
-    query RegionBlogQuery {
-      allMarkdownRemark(
+    query PagesQuery {
+      regionMarkdowns: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(data/region)/" } }
       ) {
-        nodes {
+        regions: nodes {
+          frontmatter {
+            slug
+          }
+        }
+      }
+
+      galleryMarkdowns: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(data/gallery)/" } }
+      ) {
+        galleries: nodes {
           frontmatter {
             slug
           }
@@ -27,11 +37,20 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  data.allMarkdownRemark.nodes.forEach(node => {
+  data.regionMarkdowns.regions.forEach(node => {
     const { slug } = node.frontmatter
     actions.createPage({
       path: "/destination/" + slug,
       component: path.resolve("./src/templates/region-details.js"),
+      context: { slug }, // query variable
+    })
+  })
+
+  data.galleryMarkdowns.galleries.forEach(node => {
+    const { slug } = node.frontmatter
+    actions.createPage({
+      path: "/gallery/" + slug,
+      component: path.resolve("./src/templates/gallery-blog.js"),
       context: { slug }, // query variable
     })
   })

@@ -11,10 +11,12 @@ const Card = styled.div`
   // margin-top: 5rem;
   //height: 100%;
   // border: 2px solid red;
-  margin-bottom: 3rem;
+  // margin-bottom: 40%;
   // &:not:first-child {
     // border: 3px solid green;
     // margin-top: 3rem;
+
+    margin-bottom: 5rem;
   }
 `
 
@@ -44,6 +46,7 @@ const MainImageAndDescriptionContainer = styled.div`
   display: flex;
   flex-direction: row;
   background: #fcf5ed;
+  // justify-content: flex-end;
 
   @media (max-width: 480px) {
     display: flex;
@@ -61,11 +64,20 @@ const MainImageContainer = styled.div`
   }
 `
 const DescriptionContainer = styled.div`
+  width: 40%;
+  // border: 3px solid red;
+  // left: 50%;
+  // height: 80%;
+  // position: absolute;
   @media (max-width: 480px) {
+    border: none;
+    position: relative;
+    margin-left: 0;
+    left: 0;
+    width: 100%;
     // display: none;
     // border: 3px solid red;
   }
-  // border: 3px solid yellow;
 `
 
 const MenuImage = styled.div`

@@ -9,30 +9,29 @@ import {
   MainImageAndDescriptionContainer,
   MainImageContainer,
 } from "./styled"
+import ImageSwiper from "../imageSwiper"
 import Description from "./description"
+import styled from "styled-components"
+
+// const sliderParams = {
+//   slidesPerView: "auto",
+//   centeredSlides: true,
+// }
+
+const ImageSwiperContainer = styled.div`
+  // position: absolute;
+  width: 60%;
+  @media (max-width: 480px) {
+    // display: none;
+    // border: 3px solid red;
+    position: relative;
+    height: 50%;
+    width: 100%;
+  }
+`
 
 // first image maknit iz parenta
 const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
-  // const ref = useRef(hashLink)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [activeImage, setActiveImage] = useState(
-    getImage(images[activeIndex].featuredImage)
-  )
-
-  const setImage = index => {
-    setActiveIndex(index)
-    setActiveImage(getImage(images[index].featuredImage))
-  }
-
-  const nextImageOnClick = () => {
-    const index = activeIndex === images.length - 1 ? 0 : activeIndex + 1
-    setImage(index)
-  }
-
-  const prevImageOnClick = () => {
-    const index = activeIndex === 0 ? images.length - 1 : activeIndex - 1
-    setImage(index)
-  }
   return (
     <Card
     // fragment tu ako je visak
@@ -42,35 +41,12 @@ const Accomodation = ({ title, images, description, firstImage, hashLink }) => {
       <Title>
         <FormattedMessage id={title} defaultMessage={"accomodation"} />
       </Title>
-      {/* <ImagesContainer> */}
       <MainImageAndDescriptionContainer>
-        <MainImageContainer>
-          <MainImage
-            nextImageOnClick={nextImageOnClick}
-            prevImageOnClick={prevImageOnClick}
-            activeImage={activeImage}
-          />
-        </MainImageContainer>
+        <ImageSwiperContainer>
+          <ImageSwiper images={images} />
+        </ImageSwiperContainer>
         <Description description={description} />
       </MainImageAndDescriptionContainer>
-
-      {/* <ImagesMenuContainer>
-          {images.map(({ featuredImage }, index) => {
-            const image = getImage(featuredImage)
-            return (
-              <MenuImage
-                onClick={() => {
-                  setImage(index)
-                }}
-                active={activeIndex === index}
-                key={uuidv4()}
-              >
-                <GatsbyImage image={image} alt="accomodation-main-image" />
-              </MenuImage>
-            )
-          })}
-        </ImagesMenuContainer> */}
-      {/* </ImagesContainer> */}
     </Card>
   )
 }

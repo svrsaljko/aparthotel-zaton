@@ -61,7 +61,9 @@ function GalleryBlog({ data }) {
     <Layout>
       <Container>
         <Title>{title}</Title>
-        <ImageSwiper images={images} />
+        <div style={{ display: "flex" }}>
+          <ImageSwiper images={images} />
+        </div>
         <ButtonsContainer>
           {links.map(link => (
             <Button

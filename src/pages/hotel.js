@@ -134,6 +134,7 @@ const CardsContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
+  display: flex;
   @media (max-width: 480px) {
     // margin-right: -1.5rem;
     // margin-left: -1.5rem;
@@ -235,13 +236,15 @@ function Hotel({ data }) {
         <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>
         <StyledLink> KORONAVIRUS MJERE</StyledLink>
       </CoronaText>
-      <StaticImage
-        src="../images/slider-1.jpg"
-        alt="aparthotel-zaton-logo"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
+      <ImageWrapper>
+        <StaticImage
+          src="../images/slider-1.jpg"
+          alt="aparthotel-zaton-logo"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
       <ReviewsContainer>
         <ReviewsContainerTitle>RECENZIJE GOSTIJU</ReviewsContainerTitle>
 

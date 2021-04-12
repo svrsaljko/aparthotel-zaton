@@ -46,6 +46,7 @@ const Title = styled.div`
   }
 `
 const ImageWrapper = styled.div`
+  display: flex;
   z-index: 1000;
   opacity: 0.7;
   &:hover {

@@ -19,6 +19,7 @@ import styled from "styled-components"
 // }
 
 const ImageSwiperContainer = styled.div`
+  display: flex;
   // position: absolute;
   width: 60%;
   @media (max-width: 480px) {

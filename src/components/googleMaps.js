@@ -38,7 +38,7 @@ function GoogleMaps() {
           mapContainerStyle={containerStyle}
           //mapContainerClassName="google-map"
           center={center}
-          zoom={16}
+          zoom={18}
         >
           {/* Child components, such as markers, info windows, etc. */}
           <></>

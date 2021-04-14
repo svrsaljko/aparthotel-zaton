@@ -25,6 +25,10 @@ export const TitleContainerStyled = styled.div`
   display: flex;
   flexdirection: row;
   justifycontent: space-between;
+  // border: 3px solid red;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 480px) {
     width: 40%;
   }
@@ -67,7 +71,7 @@ export const HamburgerMenuWrapper = styled.div`
 `
 
 export const NavBar = styled.div`
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
   display: block;
   @media (max-width: 480px) {
     display: ${({ show }) => (show ? "flex" : "none")};

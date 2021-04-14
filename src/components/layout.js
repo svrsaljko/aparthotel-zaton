@@ -13,8 +13,8 @@ const mapStateToProps = state => {
 
 const PageWrapper = styled.div`
   //border: 3px solid black;
-  margin-right: 20rem;
-  margin-left: 20rem;
+  margin-right: 27rem;
+  margin-left: 27rem;
   margin-top: 1rem;
   @media (max-width: 480px) {
     // margin-right: 0.1rem;

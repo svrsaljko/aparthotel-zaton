@@ -18,6 +18,7 @@ import {
 // const HashLink = genericHashLink(Link)
 
 const StyledCard = styled.div`
+  position: relative;
   background: #fcf5ed;
   margin-right: 5rem;
   margin-left: 5rem;
@@ -27,7 +28,9 @@ const StyledCard = styled.div`
   &:not(:last-child) {
     margin-left: 0;
   }
-
+  :&hover  {
+    cursor: pointer;
+  }
   @media (max-width: 480px) {
     margin: 0;
     margin-bottom: 3rem;
@@ -53,12 +56,21 @@ const BodyTitle = styled.div`
 `
 
 const StyledCardTitle = styled.div`
-  color: ${LOGO_DARK_BLUE_COMPLEMENT};
+  color: white;
+  width: 100%;
+  text-align: center;
+  top: 45%;
+  // height: 100%;
+  // left: 50%;
+  // border: 3px solid red;
+  z-index: 2;
+  position: absolute;
   //color:#9802d4;
   font-size: 2rem;
-  text-align: center;
-  margin-top: 1.5rem;
-  min-height: 5rem;
+  // text-align: center;
+  //margin-top: 1.5rem;
+  //min-height: 5rem;
+  cursor: pointer;
 `
 const StyledCardLink = styled.div`
   //color: #9802d4;
@@ -134,7 +146,11 @@ const CardsContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
+  width: 100%;
   display: flex;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 480px) {
     // margin-right: -1.5rem;
     // margin-left: -1.5rem;
@@ -149,26 +165,26 @@ const CoronaText = styled.div`
   }
 `
 
-const reviews = [
-  {
-    customer: "Medo",
-    review:
-      "Usluga je bila super sve je bilo top, skočia sam u bazen na glavu iako se nesmi",
-  },
-  {
-    customer: "Brize",
-    review:
-      "Dosa sam popit heineken i okupa se u bazenu, usput sam malo popravlja vodoinstalacije",
-  },
-  {
-    customer: "Cuza",
-    review: "Nema grmalja u blizini ali svakako je bilo dobro prenoćiti",
-  },
-  {
-    customer: "Dome",
-    review: "Spiza je bila dobra, ali mogu ja spremit bolje ;)",
-  },
-]
+// const reviews = [
+//   {
+//     customer: "Medo",
+//     review:
+//       "Usluga je bila super sve je bilo top, skočia sam u bazen na glavu iako se nesmi",
+//   },
+//   {
+//     customer: "Brize",
+//     review:
+//       "Dosa sam popit heineken i okupa se u bazenu, usput sam malo popravlja vodoinstalacije",
+//   },
+//   {
+//     customer: "Cuza",
+//     review: "Nema grmalja u blizini ali svakako je bilo dobro prenoćiti",
+//   },
+//   {
+//     customer: "Dome",
+//     review: "Spiza je bila dobra, ali mogu ja spremit bolje ;)",
+//   },
+// ]
 
 const DetailsButton = styled.button`
   // background: ${TRIADIC_GOLD};
@@ -185,7 +201,10 @@ const DetailsButton = styled.button`
 `
 
 function Hotel({ data }) {
-  const { cardImages } = data.allMarkdownRemark
+  const { cardImages } = data.accomodations
+  const { reviews } = data.allMarkdownRemark.nodes[0].frontmatter
+  // console.log("data:", data)
+  // console.log("review:", reviews)
 
   return (
     <Layout>
@@ -199,7 +218,7 @@ function Hotel({ data }) {
         />
       </ImageWrapper>
 
-      <BodyMainTitle>SMJEŠTAJ</BodyMainTitle>
+      {/* <BodyMainTitle>SMJEŠTAJ</BodyMainTitle> */}
       <CardsContainer>
         {cardImages.map(({ cardImage }) => {
           const { featuredImage } = cardImage
@@ -210,43 +229,33 @@ function Hotel({ data }) {
           //const { id } = featuredImage.childImageSharp
           const image = getImage(featuredImage)
           return (
-            <StyledCard key={uuidv4()}>
-              <GatsbyImage
-                image={image}
-                // alt prominit-prijevod
-                alt="aparthotel-zaton-logo"
-                quality={100}
-                loading="lazy"
-              />
+            <StyledCard
+              key={uuidv4()}
+              onClick={() => {
+                navigate("/accomodation/")
+              }}
+            >
               <StyledCardTitle>
                 <FormattedMessage id={title} defaultMessage={"Accomodation"} />
               </StyledCardTitle>
-              <DetailsButton
-                onClick={() => {
-                  navigate("/accomodation/")
-                }}
-              >
-                PRIKAZI POJEDINOSTI
-              </DetailsButton>
+              <ImageWrapper>
+                <GatsbyImage
+                  image={image}
+                  // alt prominit-prijevod
+                  alt="aparthotel-zaton-logo"
+                  quality={100}
+                  loading="lazy"
+                />
+              </ImageWrapper>
             </StyledCard>
           )
         })}
       </CardsContainer>
-      <CoronaText>
-        <BodyTitle>OSTANITE SIGURNI S NAMA</BodyTitle>
-        <StyledLink> KORONAVIRUS MJERE</StyledLink>
-      </CoronaText>
-      <ImageWrapper>
-        <StaticImage
-          src="../images/slider-1.jpg"
-          alt="aparthotel-zaton-logo"
-          quality={100}
-          loading="eager"
-          layout="constrained"
-        />
-      </ImageWrapper>
+
       <ReviewsContainer>
-        <ReviewsContainerTitle>RECENZIJE GOSTIJU</ReviewsContainerTitle>
+        <ReviewsContainerTitle>
+          What are quest says about us
+        </ReviewsContainerTitle>
 
         {reviews.map((review, index) => (
           <ReviewWrapper key={index + 100} backgroundColor={index % 2 === 0}>
@@ -262,7 +271,7 @@ function Hotel({ data }) {
 
 export const query = graphql`
   query CardImages {
-    allMarkdownRemark(
+    accomodations: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/(data/hotel/accomodation)/" } }
     ) {
       cardImages: nodes {
@@ -272,6 +281,19 @@ export const query = graphql`
             childImageSharp {
               gatsbyImageData
             }
+          }
+        }
+      }
+    }
+
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/(data/hotel/reviews)/" } }
+    ) {
+      nodes {
+        frontmatter {
+          reviews {
+            customer
+            review
           }
         }
       }

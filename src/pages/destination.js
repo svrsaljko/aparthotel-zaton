@@ -43,7 +43,7 @@ const Description = styled.div`
 `
 
 const DescriptionTitle = styled.div`
-  margin-left: ${({ reverse }) => (reverse ? "5rem" : "0")};
+  margin-left: ${({ reverse }) => (reverse ? "2rem" : "0")};
   color: ${LOGO_DARK_BLUE_COMPLEMENT};
   font-size: 2rem;
   @media (max-width: 480px) {
@@ -52,7 +52,7 @@ const DescriptionTitle = styled.div`
 `
 
 const BriefDescription = styled.div`
-  margin-left: ${({ reverse }) => (reverse ? "5rem" : "0")};
+  margin-left: ${({ reverse }) => (reverse ? "2rem" : "0")};
 
   color: black;
   font-size: 1.5rem;
@@ -64,7 +64,7 @@ const BriefDescription = styled.div`
 `
 
 const ButtonWrapper = styled.div`
-  margin-left: ${({ reverse }) => (reverse ? "5rem" : "0")};
+  margin-left: ${({ reverse }) => (reverse ? "2rem" : "0")};
 
   display: flex;
   flex-direction: row;

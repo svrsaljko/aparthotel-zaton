@@ -11,6 +11,7 @@ import {
   StarWrapper,
   LanguageSelectorMailtoWrapper,
 } from "./headerStyled"
+import { navigate } from "gatsby-plugin-react-intl"
 import Mailto from "../mailto"
 import { Divide as Hamburger } from "hamburger-react"
 import { StaticImage } from "gatsby-plugin-image"
@@ -23,7 +24,11 @@ const TitleContainer = () => {
 
   return (
     <TitleWrapper>
-      <TitleContainerStyled>
+      <TitleContainerStyled
+        onClick={() => {
+          navigate("/hotel")
+        }}
+      >
         <TitleImageWrapper>
           <StaticImage
             src="../../images/aparthotel-zaton-logo.jpeg"

@@ -94,12 +94,15 @@ margin-top:4rem;
 margin-bottom: 1.5rem;
 `
 const ReviewsContainer = styled.div`
+  text-align: center;
+  color: white;
+  background: ${LOGO_DARK_BLUE};
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
 `
 const ReviewsContainerTitle = styled.div`
-  color: ${TRIADIC_GOLD};
+  // color: ${TRIADIC_GOLD};
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
@@ -111,13 +114,10 @@ const ReviewsContainerTitle = styled.div`
 const ReviewWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  //padding-top: 1rem;
   padding-bottom: 1.5rem;
-  background: ${({ backgroundColor }) =>
-    backgroundColor ? "#fff4e5" : "white"};
 `
 const ReviewTitle = styled.div`
-  color: ${TRIADIC_GOLD};
+  // color: ${TRIADIC_GOLD};
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -126,7 +126,7 @@ const ReviewTitle = styled.div`
   }
 `
 const ReviewBody = styled.div`
-  color: ${TRIADIC_GOLD};
+  // color: ${TRIADIC_GOLD};
   font-size: 1.2rem;
   @media (max-width: 480px) {
     margin-left: 1rem;
@@ -259,8 +259,8 @@ function Hotel({ data }) {
 
         {reviews.map((review, index) => (
           <ReviewWrapper key={index + 100} backgroundColor={index % 2 === 0}>
-            <ReviewTitle> {review.customer} </ReviewTitle>
             <ReviewBody>{review.review}</ReviewBody>
+            <ReviewTitle> {review.customer} </ReviewTitle>
           </ReviewWrapper>
         ))}
       </ReviewsContainer>

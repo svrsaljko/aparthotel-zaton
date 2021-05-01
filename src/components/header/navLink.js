@@ -31,7 +31,8 @@ const NavLink = ({ name, to }) => {
     <Link
       activeStyle={activeStyle}
       className="header-nav-link"
-      activeClassName="header-nav-link-active"
+      // problem sa linkovima
+      // activeClassName="header-nav-link-active"
       to={to}
       onClick={() => (showMenu ? onPageChange() : null)}
     >

@@ -14,26 +14,44 @@ import {
   LOGO_LIGHT_BLUE,
   TRIADIC_GOLD,
 } from "../constants"
+import ReviewSwiper from "../components/reviewSwiper"
 
 // const HashLink = genericHashLink(Link)
 
 const StyledCard = styled.div`
   position: relative;
   background: #fcf5ed;
-  margin-right: 5rem;
-  margin-left: 5rem;
-  &:not(:first-child) {
-    margin-right: 0;
+
+  &:first-child {
+    margin-right: 1rem;
   }
-  &:not(:last-child) {
-    margin-left: 0;
+  &:nth-child(2) {
+    margin-left: 1rem;
+  }
+  &:last-child {
+    margin-top: 2rem;
+    width: 120%;
+    margin-left: 40%;
+    margin-right: 40%;
   }
   :&hover  {
     cursor: pointer;
   }
+
   @media (max-width: 480px) {
     margin: 0;
     margin-bottom: 3rem;
+    &:first-child {
+      margin: 0;
+    }
+    &:nth-child(2) {
+      margin: 2rem 0 2rem 0;
+    }
+
+    &:last-child {
+      width: 100%;
+      margin: 0;
+    }
   }
 `
 const BodyMainTitle = styled.div`
@@ -56,20 +74,17 @@ const BodyTitle = styled.div`
 `
 
 const StyledCardTitle = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   color: white;
   width: 100%;
   text-align: center;
   top: 45%;
-  // height: 100%;
-  // left: 50%;
-  // border: 3px solid red;
   z-index: 2;
-  position: absolute;
   //color:#9802d4;
   font-size: 2rem;
-  // text-align: center;
-  //margin-top: 1.5rem;
-  //min-height: 5rem;
   cursor: pointer;
 `
 const StyledCardLink = styled.div`
@@ -93,52 +108,15 @@ font-size 1.5rem;
 margin-top:4rem;
 margin-bottom: 1.5rem;
 `
-const ReviewsContainer = styled.div`
-  text-align: center;
-  color: white;
-  background: ${LOGO_DARK_BLUE};
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-`
-const ReviewsContainerTitle = styled.div`
-  // color: ${TRIADIC_GOLD};
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  @media (max-width: 480px) {
-    margin-left: 1rem;
-  }
-`
-
-const ReviewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
-`
-const ReviewTitle = styled.div`
-  // color: ${TRIADIC_GOLD};
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  @media (max-width: 480px) {
-    margin-left: 1rem;
-  }
-`
-const ReviewBody = styled.div`
-  // color: ${TRIADIC_GOLD};
-  font-size: 1.2rem;
-  @media (max-width: 480px) {
-    margin-left: 1rem;
-  }
-`
 
 const CardsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // flex-direction: row;
+  justify-content: stretch;
   margin-top: 5rem;
   @media (max-width: 480px) {
+    display: flex;
     flex-direction: column;
     //margin-right: -1.5rem;
     //margin-left: -1.5rem;
@@ -150,6 +128,10 @@ const ImageWrapper = styled.div`
   display: flex;
   &:hover {
     cursor: pointer;
+  }
+
+  ${StyledCard}:hover & {
+    filter: brightness(50%);
   }
   @media (max-width: 480px) {
     // margin-right: -1.5rem;
@@ -165,27 +147,6 @@ const CoronaText = styled.div`
   }
 `
 
-// const reviews = [
-//   {
-//     customer: "Medo",
-//     review:
-//       "Usluga je bila super sve je bilo top, skočia sam u bazen na glavu iako se nesmi",
-//   },
-//   {
-//     customer: "Brize",
-//     review:
-//       "Dosa sam popit heineken i okupa se u bazenu, usput sam malo popravlja vodoinstalacije",
-//   },
-//   {
-//     customer: "Cuza",
-//     review: "Nema grmalja u blizini ali svakako je bilo dobro prenoćiti",
-//   },
-//   {
-//     customer: "Dome",
-//     review: "Spiza je bila dobra, ali mogu ja spremit bolje ;)",
-//   },
-// ]
-
 const DetailsButton = styled.button`
   // background: ${TRIADIC_GOLD};
   background: ${LOGO_LIGHT_BLUE};
@@ -198,6 +159,21 @@ const DetailsButton = styled.button`
 
     cursor: pointer;
   }
+`
+
+const TitleWrapper = styled.div`
+  border: 2px solid white;
+  max-width: 65%;
+
+  ${StyledCard}:hover & {
+    border: 2px solid ${LOGO_DARK_BLUE};
+    background: ${LOGO_DARK_BLUE};
+  }
+
+  // &:hover {
+  //   border: 2px solid ${LOGO_DARK_BLUE};
+  //   background: ${LOGO_DARK_BLUE};
+  // }
 `
 
 function Hotel({ data }) {
@@ -236,7 +212,12 @@ function Hotel({ data }) {
               }}
             >
               <StyledCardTitle>
-                <FormattedMessage id={title} defaultMessage={"Accomodation"} />
+                <TitleWrapper>
+                  <FormattedMessage
+                    id={title}
+                    defaultMessage={"Accomodation"}
+                  />
+                </TitleWrapper>
               </StyledCardTitle>
               <ImageWrapper>
                 <GatsbyImage
@@ -245,6 +226,9 @@ function Hotel({ data }) {
                   alt="aparthotel-zaton-logo"
                   quality={100}
                   loading="lazy"
+                  layout="constrained"
+                  // width={200}
+                  // height={200}
                 />
               </ImageWrapper>
             </StyledCard>
@@ -252,18 +236,8 @@ function Hotel({ data }) {
         })}
       </CardsContainer>
 
-      <ReviewsContainer>
-        <ReviewsContainerTitle>
-          What are quest says about us
-        </ReviewsContainerTitle>
+      <ReviewSwiper reviews={reviews} />
 
-        {reviews.map((review, index) => (
-          <ReviewWrapper key={index + 100} backgroundColor={index % 2 === 0}>
-            <ReviewBody>{review.review}</ReviewBody>
-            <ReviewTitle> {review.customer} </ReviewTitle>
-          </ReviewWrapper>
-        ))}
-      </ReviewsContainer>
       <GoogleMaps />
     </Layout>
   )

@@ -7,6 +7,8 @@ import Header from "./header"
 import "../css/index.css"
 import styled from "styled-components"
 
+// ZABRANIT DA SE SLIKE SKIDAJU NA DRZANJE PRSTOM
+
 const mapStateToProps = state => {
   return { state }
 }

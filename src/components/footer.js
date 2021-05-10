@@ -37,6 +37,9 @@ const Menu = styled.div`
   margin-top: 1.5rem;
 `
 const ImageWrapper = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 480px) {
     width: 100%;
   }
@@ -105,6 +108,11 @@ const Instagram = styled(SocialMediaChild)`
 const Facebook = styled(SocialMediaChild)`
   color: #3b5998;
 `
+
+const SocialMediaLink = styled.a`
+  text-decoration: none;
+`
+
 // najbolji nacin za imenovati alt za bolji SEO
 
 const FooterImagesWrapper = styled.div`
@@ -123,56 +131,64 @@ const AllRights = styled.div`
     }
   }
 `
-
+//dodati linkoveeeee, dodati i fragment link na odredeni dio stranice, i ikonu na gugl mape
 const FooterImages = () => (
   <FooterImagesWrapper>
-    <ImageWrapper>
-      <StaticImage
-        src="../images/footer/hrvatska-puna-zivota.png"
-        alt="croatia-full-of-life"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
-    </ImageWrapper>
-
-    <ImageWrapper>
-      <StaticImage
-        src="../images/footer/zadar-region.png"
-        alt="zadar"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
-    </ImageWrapper>
-    <ImageWrapper>
-      <StaticImage
-        src="../images/footer/zadar-tourist-board.png"
-        alt="zadar-tourits-board"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
-    </ImageWrapper>
-
-    <ImageWrapper>
-      <StaticImage
-        src="../images/footer/zadar-airport.png"
-        alt="zadar-airport"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
-    </ImageWrapper>
-    <ImageWrapper>
-      <StaticImage
-        src="../images/footer/lulic-taxi.png"
-        alt="taxi-lulic"
-        quality={100}
-        loading="eager"
-        layout="constrained"
-      />
-    </ImageWrapper>
+    <a href="https://croatia.hr/en-GB" target="_blank">
+      <ImageWrapper>
+        <StaticImage
+          src="../images/footer/hrvatska-puna-zivota.png"
+          alt="croatia-full-of-life"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
+    </a>
+    <a href="https://www.zadar.hr/" target="_blank">
+      <ImageWrapper>
+        <StaticImage
+          src="../images/footer/zadar-region.png"
+          alt="zadar"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
+    </a>
+    <a href="https://zadar.travel/" target="_blank">
+      <ImageWrapper>
+        <StaticImage
+          src="../images/footer/zadar-tourist-board.png"
+          alt="zadar-tourits-board"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
+    </a>
+    <a href="https://www.zadar-airport.hr/" target="_blank">
+      <ImageWrapper>
+        <StaticImage
+          src="../images/footer/zadar-airport.png"
+          alt="zadar-airport"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
+    </a>
+    <a href="https://www.lulic.hr/taxi/en/" target="_blank">
+      <ImageWrapper>
+        <StaticImage
+          src="../images/footer/lulic-taxi.png"
+          alt="taxi-lulic"
+          quality={100}
+          loading="eager"
+          layout="constrained"
+        />
+      </ImageWrapper>
+    </a>
   </FooterImagesWrapper>
 )
 
@@ -187,15 +203,17 @@ const Footer = () => {
     <FooterWrapper>
       <Container>
         <SafeTravelAndMenu>
-          <ImageWrapper>
-            <StaticImage
-              src="../images/footer/safe-stay.png"
-              alt="safe-travel-img1"
-              quality={100}
-              loading="eager"
-              layout="constrained"
-            />
-          </ImageWrapper>
+          <a href="https://croatia.hr/en-GB" target="_blank">
+            <ImageWrapper>
+              <StaticImage
+                src="../images/footer/safe-stay.png"
+                alt="safe-travel-img1"
+                quality={100}
+                loading="eager"
+                layout="constrained"
+              />
+            </ImageWrapper>
+          </a>
           <Menu>
             <FooterLink name={"Hotel"} to="/hotel" />
             <FooterLink name={"Accomodation"} to="/accomodation" />
@@ -213,14 +231,24 @@ const Footer = () => {
             E-mail: <GoldText>reservations@aparthotel-zaton.hr</GoldText>
           </div>
           <SocialMedia>
-            <Instagram>
-              <FaInstagram />
-              <div>Instagram</div>
-            </Instagram>
-            <Facebook>
-              <AiFillFacebook />
-              <div>Facebook</div>
-            </Facebook>
+            <SocialMediaLink
+              href="https://www.instagram.com/ahzaton/"
+              target="_blank"
+            >
+              <Instagram>
+                <FaInstagram />
+                <div>Instagram</div>
+              </Instagram>
+            </SocialMediaLink>
+            <SocialMediaLink
+              href="https://www.facebook.com/pages/category/Hotel/Aparthotel-Zaton-358649838337449/"
+              target="_blank"
+            >
+              <Facebook>
+                <AiFillFacebook />
+                <div>Facebook</div>
+              </Facebook>
+            </SocialMediaLink>
           </SocialMedia>
         </SocialMediaAndContact>
       </Container>

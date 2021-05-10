@@ -4,9 +4,13 @@ import {
   // useLoadScript,
   LoadScript,
   // useJsApiLoader,
-  // Marker,
+  Marker,
 } from "@react-google-maps/api"
 import styled from "styled-components"
+import icon from "../images/icon.ico"
+import { StaticImage } from "gatsby-plugin-image"
+
+// ikona i fragment link
 
 const containerStyle = {
   width: "100%",
@@ -27,6 +31,7 @@ const Container = styled.div`
     height: 300px;
   }
 `
+//const Icon = () => <img src={icon} alt="icon" />
 
 function GoogleMaps() {
   return (
@@ -40,7 +45,22 @@ function GoogleMaps() {
           center={center}
           zoom={18}
         >
+          {/* <StaticImage
+            src="../../images/icon.ico"
+            alt="aparthotel-zaton-icon"
+            quality={100}
+            width={20}
+            height={20}
+            // loading="lazy"
+            loading="eager"
+            //placeholder="blurred"
+            layout="constrained"
+            //layout="fixed"
+          /> */}
           {/* Child components, such as markers, info windows, etc. */}
+          {/* <div style={{ width: "20px", height: "30px" }}>
+            <Marker position={center} icon={icon} /> */}
+          {/* </div> */}
           <></>
         </GoogleMap>
       </LoadScript>

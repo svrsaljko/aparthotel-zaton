@@ -28,13 +28,16 @@ const SafeTravelAndMenu = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   @media (max-width: 480px) {
-    margin-right: 1rem;
+    flex-direction: column;
   }
 `
 const Menu = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
+  @media (max-width: 480px) {
+    margin-left: 1rem;
+  }
 `
 const ImageWrapper = styled.div`
   &:hover {
@@ -76,6 +79,8 @@ const SocialMediaAndContact = styled.div`
     // div {
     // border: 3px solid red;
     margin-left: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     // }
   }
 `
@@ -84,6 +89,7 @@ const GoldText = styled.div`
 `
 
 const SocialMedia = styled.div`
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   // border: 2px solid red;
@@ -95,6 +101,9 @@ const SocialMediaChild = styled.div`
 
   div {
     margin-left: 0.5rem;
+  }
+  :nth-child(1) {
+    margin-bottom: 1rem;
   }
 
   // @media (max-width: 480px) {
@@ -112,12 +121,20 @@ const Facebook = styled(SocialMediaChild)`
 const SocialMediaLink = styled.a`
   text-decoration: none;
 `
+const Contact = styled.div`
+  margin-top: 0.5rem;
+`
 
 // najbolji nacin za imenovati alt za bolji SEO
 
 const FooterImagesWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  @media (max-width: 480px) {
+    width: 70%;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 
 const AllRights = styled.div`
@@ -224,12 +241,12 @@ const Footer = () => {
         </SafeTravelAndMenu>
         <SocialMediaAndContact>
           <div>Dražnikova ul. 17, 23232, Zaton </div>
-          <div>
+          <Contact>
             Hrvatska Phone:<GoldText>023 265 900</GoldText>
-          </div>
-          <div>
+          </Contact>
+          <Contact>
             E-mail: <GoldText>reservations@aparthotel-zaton.hr</GoldText>
-          </div>
+          </Contact>
           <SocialMedia>
             <SocialMediaLink
               href="https://www.instagram.com/ahzaton/"

@@ -21,7 +21,8 @@ const Card = styled.div`
 `
 
 const Title = styled.div`
-  color: ${LOGO_DARK_BLUE_COMPLEMENT};
+  color: ${({ theme }) => theme.textMainColor};  
+//color: ${LOGO_DARK_BLUE_COMPLEMENT};
   //color:#9802d4;
   font-size: 2rem;
   // font-weight: bold;
@@ -45,9 +46,10 @@ const ImagesContainer = styled.div`
 const MainImageAndDescriptionContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background: #fcf5ed;
+  background: ${({ theme }) => theme.cardShadowColor};
+  //background: #fcf5ed;
   // justify-content: flex-end;
-
+  color: ${({ theme }) => theme.maintextMainColor};
   @media (max-width: 480px) {
     display: flex;
     flex-direction: column;

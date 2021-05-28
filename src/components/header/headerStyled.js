@@ -66,7 +66,7 @@ export const HamburgerMenuWrapper = styled.div`
     // border: 3px solid black;
     //margin-right: -0.75rem;
     color: ${({ show }) => (show ? LOGO_LIGHT_BLUE : LOGO_DARK_BLUE)};
-    color: ${LOGO_DARK_BLUE};
+    //color: ${LOGO_DARK_BLUE};
   }
 `
 

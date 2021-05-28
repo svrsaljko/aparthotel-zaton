@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import Footer from "./footer"
 import Header from "./header"
 import "../css/index.css"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 
 // ZABRANIT DA SE SLIKE SKIDAJU NA DRZANJE PRSTOM
 
@@ -24,6 +24,11 @@ const PageWrapper = styled.div`
     margin: 0;
   }
 `
+
+const theme = {
+  textMainColor: "#444444",
+  cardShadowColor: "#ececec",
+}
 
 // const mapDispatchToProps = dispatch => {
 //   return { increment: () => dispatch({ type: `INCREMENT` }) }
@@ -56,12 +61,13 @@ const Layout = ({ children }) => {
           },
         ]}
       />
-
-      <PageWrapper>
-        <Header />
-        {children}
-        <Footer />
-      </PageWrapper>
+      <ThemeProvider theme={theme}>
+        <PageWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </PageWrapper>
+      </ThemeProvider>
     </>
   )
 }
